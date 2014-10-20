@@ -1,0 +1,21 @@
+﻿<UserControl
+    x:Class="UsBank.Controls.HubTile"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UsBank.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="130"
+    d:DesignWidth="130"
+    x:Name="RootHubTile">
+
+    <StackPanel x:Name="RootPanel" Background="#137677" Height="130" Width="130" Tapped="StackPanelTapped">
+        <TextBlock HorizontalAlignment="Center"
+            FontSize="16"
+            Text="{Binding ElementName=RootHubTile, Path=HeaderText}" Foreground="#0a5051"/>
+        <Image Stretch="None"
+            Margin="8"
+            Source="{Binding ElementName=RootHubTile, Path=ActiveTileImage}"/>
+    </StackPanel>
+</UserControl>
