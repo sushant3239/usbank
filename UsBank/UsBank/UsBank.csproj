@@ -219,8 +219,9 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.6.0.5\lib\netcore45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="WinRT.Triggers">
-      <HintPath>..\..\..\..\WinRTTriggers (1)\WinRT.Triggers.dll</HintPath>
+    <Reference Include="WinRT.Triggers, Version=1.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Bineries\WinRT.Triggers.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
