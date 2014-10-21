@@ -118,6 +118,12 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UsBank.Core\UsBank.Core.csproj">
+      <Project>{dd8530af-e9fc-4ea8-8100-f4977dbf7a72}</Project>
+      <Name>UsBank.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>
   </PropertyGroup>

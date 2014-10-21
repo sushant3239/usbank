@@ -6,8 +6,10 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="using:UsBank.Controls"
-    mc:Ignorable="d">
-
+    mc:Ignorable="d"
+    xmlns:triggers="using:WinRT.Triggers"
+    DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=MainPageViewModel}">
+    
     <Grid>
         <!--<Grid.Background>
             <ImageBrush ImageSource="/Assets/WorldMap_BG.png"/>
@@ -49,9 +51,15 @@
                                 InActiveTileImage="/Assets/MyActivity_Inactive_Icon.png"/>
 
                             <controls:HubTile Grid.Row="0" Grid.Column="2"
-                                HeaderText="Customers"
+                                HeaderText="Customers"                                
                                 ActiveTileImage="/Assets/Customers_Active_Icon.png"
-                                InActiveTileImage="/Assets/Customers_Inactive_Icon.png"/>
+                                InActiveTileImage="/Assets/Customers_Inactive_Icon.png">
+                                <triggers:Interactions.Triggers>
+                                    <triggers:EventTrigger EventName="Tapped">
+                                        <triggers:InvokeCommandAction Command="{Binding NavigateToCustomersCommand}"/>
+                                    </triggers:EventTrigger>
+                                </triggers:Interactions.Triggers>
+                            </controls:HubTile>
 
                             <controls:HubTile Grid.Row="2" Grid.Column="0"
                                 HeaderText="Operations"
