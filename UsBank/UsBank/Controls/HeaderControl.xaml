@@ -24,7 +24,7 @@
                 <TextBlock Text="{Binding ElementName=RootHeaderControl,Path=UserName}" FontSize="20" HorizontalAlignment="Right"/>
                 <TextBlock Text="{Binding ElementName=RootHeaderControl,Path=UserRole}" FontSize="20" HorizontalAlignment="Right"/>
             </StackPanel>
-            <Image Grid.Column="1" Source="/Assets/Pic1.png"/>
+            <Image Grid.Column="1" Source="/Assets/Pic1.png" Width="70" Height="70"/>
         </Grid>
     </Grid>
 </UserControl>

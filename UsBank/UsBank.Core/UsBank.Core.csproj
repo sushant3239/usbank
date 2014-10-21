@@ -101,7 +101,6 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="Data\USBankMSCRMEntities.cs" />
     <Compile Include="IAccountManager.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -114,8 +113,6 @@
     <None Include="Properties\ServiceReferences.Designer.ClientConfig" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\Debug\Microsoft.Crm.Sdk.Proxy.dll" />
-    <Content Include="bin\Debug\Microsoft.Xrm.Sdk.dll" />
     <Content Include="bin\Debug\UsBank.Core.dll" />
     <Content Include="bin\Debug\UsBank.Core.pdb" />
   </ItemGroup>
@@ -127,6 +124,7 @@
     <Folder Include="bin\x64\Release\" />
     <Folder Include="bin\x86\Debug\" />
     <Folder Include="bin\x86\Release\" />
+    <Folder Include="Data\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

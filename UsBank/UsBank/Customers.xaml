@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="using:UsBank.Controls"
+    xmlns:triggers="using:WinRT.Triggers"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -46,11 +47,42 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Grid Height="120">
-                <Grid.Background>
-                    <SolidColorBrush Color="#e2cdb1"/>
-                </Grid.Background>
-                <controls:HeaderControl />
+            <controls:HeaderControl />
+            <Grid Grid.Row="1" Background="#f2e7c9"
+                DataContext="{Binding Source={StaticResource ViewModelLocator},Path=LeadsViewModel}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <GridView SelectedItem="{Binding SelectedLeadDetail,Mode=TwoWay}"
+                    ItemsSource="{Binding Leads}" x:Name="leadsGridView">
+                    <triggers:Interactions.Triggers>
+                        <triggers:EventTrigger EventName="SelectionChanged">
+                            <triggers:InvokeCommandAction Command="{Binding LeadDetailsCommand}"/>
+                        </triggers:EventTrigger>
+                    </triggers:Interactions.Triggers>
+                    <GridView.ItemTemplate>
+                        <DataTemplate>
+                            <controls:UserDetails UserImage="/Assets/Pic2.png"
+                                FirstName="{Binding FirstName}" LastName="{Binding LastName}"/>
+                        </DataTemplate>
+                    </GridView.ItemTemplate>
+                </GridView>
+                <ItemsControl ItemsSource="{Binding SelectedLeadDetails}" Grid.Column="1">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="{Binding FullName}" FontSize="15"  Margin="10 0"/>
+                                <TextBlock Grid.Column="1" Text="{Binding ProductAndServices}" FontSize="15"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
             </Grid>
         </Grid>
     </Grid>

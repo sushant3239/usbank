@@ -29,5 +29,15 @@ namespace UsBank
                 return _typeResolver.Resolve<LoginViewModel>();
             }
         }
+
+        public LeadsViewModel LeadsViewModel
+        {
+            get
+            {
+                var leadesViewModel = _typeResolver.Resolve<LeadsViewModel>();
+                leadesViewModel.LoadCommand.Execute(null);
+                return leadesViewModel;
+            }
+        }
     }
 }

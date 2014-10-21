@@ -107,6 +107,7 @@
     <Compile Include="Infrastructure\Interfaces\INavigationService.cs" />
     <Compile Include="Infrastructure\Interfaces\ISessionManager.cs" />
     <Compile Include="Infrastructure\Interfaces\ITypeResolver.cs" />
+    <Compile Include="LeadesViewModel.cs" />
     <Compile Include="LoginViewModel.cs" />
     <Compile Include="MainPageViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
