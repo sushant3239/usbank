@@ -6,11 +6,8 @@ namespace UsBank.ViewModels
 {
     public class CustomersViewModel
     {
-
         public CustomersViewModel()
         {
         }
-
-        
     }
 }

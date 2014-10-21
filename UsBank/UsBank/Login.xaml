@@ -9,8 +9,43 @@
     DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=LoginViewModel}">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Hub>
-            <HubSection Width="900"></HubSection>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Width="850">
+                <Grid.Background>
+                    <ImageBrush ImageSource="/Assets/BG_Image_LoginScreen.png"/>
+                </Grid.Background>
+            </Grid>
+
+            <StackPanel Grid.Column="1" Background="#01aaad">
+                <Grid Margin="40">
+                    <StackPanel>
+                        <TextBlock Text="Bankers Desktop" FontSize="45"/>
+                        
+                        <TextBlock Text="Login" FontSize="30"  Margin="0 20 0 40"/>
+                        
+                        <TextBlock Text="Login ID" FontSize="22" Foreground="#c6e7e7"/>
+                        <TextBox Text="{Binding UserId, Mode=TwoWay}" Margin="0 5 0 30"/>
+                        
+                        <TextBlock Text="Password" FontSize="22" Foreground="#c6e7e7"/>
+                        <TextBox Margin="0 5 0 30" Text="{Binding UserPassword, Mode=TwoWay}"/>
+                        
+                        <Button Command="{Binding LoginCommand}"
+                                Background="White" Content="Enter" FontSize="22" Foreground="#01aaad"/>
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+
+        </Grid>
+        <!--<Hub>
+            <HubSection Width="900">
+                <HubSection.Background>
+                    <ImageBrush ImageSource="/Assets/BG_Image_LoginScreen.png"/>
+                </HubSection.Background>                
+            </HubSection>
             <HubSection HorizontalAlignment="Right" Width="465">
                 <HubSection.Header>
                     <Grid>
@@ -36,6 +71,6 @@
                     </StackPanel>
                 </DataTemplate>
             </HubSection>
-        </Hub>
+        </Hub>-->
     </Grid>
 </Page>

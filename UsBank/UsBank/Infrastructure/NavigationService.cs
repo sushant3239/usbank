@@ -22,5 +22,10 @@ namespace UsBank.Infrastructure
         {
             rootFrame.Navigate(typeof(MainPage));
         }
+
+        public void GoBack()
+        {
+
+        }
     }
 }

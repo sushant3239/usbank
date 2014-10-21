@@ -5,7 +5,7 @@ namespace UsBank.Core
 {
     public interface IAccountManager
     {
-        User User { get; }
+        User CurrentUser { get; }
         void Setuser(User user);
     }
 }

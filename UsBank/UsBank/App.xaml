@@ -2,10 +2,12 @@
     x:Class="UsBank.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:UsBank">
+    xmlns:local="using:UsBank"
+    xmlns:Infrastructure="using:UsBank.Infrastructure">
     <Application.Resources>
         <ResourceDictionary>
             <local:ViewModelLocator x:Key="ViewModelLocator"/>
+            <Infrastructure:BackNavigationHelper x:Key="BackNavigationHelper"/>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

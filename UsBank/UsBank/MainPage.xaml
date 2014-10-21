@@ -8,7 +8,8 @@
     xmlns:controls="using:UsBank.Controls"
     mc:Ignorable="d"
     xmlns:triggers="using:WinRT.Triggers"
-    DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=MainPageViewModel}">
+    DataContext="{Binding Source={StaticResource ViewModelLocator},
+            Path=MainPageViewModel}">
 
     <Grid>
         <!--<Grid.Background>

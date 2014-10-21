@@ -5,20 +5,53 @@
     xmlns:local="using:UsBank"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:UsBank.Controls"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Hub>
-            <HubSection>
-                <HubSection.Header>
-                    <Grid>
-                        <TextBlock Text="Customers"/>
-                    </Grid>
-                </HubSection.Header>
-                <DataTemplate>
-                    
-                </DataTemplate>
-            </HubSection>
-        </Hub>
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition x:Name="primaryColumn" Width="420"/>
+            <ColumnDefinition x:Name="secondaryColumn" Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Background="#01aaad" Grid.Row="1">
+            <Grid x:Name="TitleGrid">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="120"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button Margin="39,59,39,0"
+                        Command="{Binding Source={StaticResource BackNavigationHelper},Path=GoBackCommand}"
+                    VerticalAlignment="Top"
+                    Style="{StaticResource NavigationBackButtonNormalStyle}"/>
+                <TextBlock Text="Customers" Grid.Column="1" Margin="0 0 0 0" VerticalAlignment="Bottom" Style="{StaticResource HeaderTextBlockStyle}"/>
+            </Grid>
+            <StackPanel Margin="40" Grid.Row="1">
+                <TextBlock Text="Leades" FontSize="40" Margin="30"/>
+                <TextBlock Text="Accounts" FontSize="40" Margin="30"/>
+                <TextBlock Text="Contacts" FontSize="40" Margin="30"/>
+            </StackPanel>
+        </StackPanel>
+        <Grid Grid.Column="1" Grid.RowSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Height="120">
+                <Grid.Background>
+                    <SolidColorBrush Color="#e2cdb1"/>
+                </Grid.Background>
+                <controls:HeaderControl />
+            </Grid>
+        </Grid>
     </Grid>
 </Page>

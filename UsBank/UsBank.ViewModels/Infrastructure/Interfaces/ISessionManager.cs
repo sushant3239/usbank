@@ -6,7 +6,7 @@ namespace UsBank.Infrastructure
     {
         void Remove(string key);
 
-        void Add(string key, object value);
+        void Add<T>(string key, T value);
 
         T GetValue<T>(string key);
 

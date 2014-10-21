@@ -12,7 +12,7 @@ namespace UsBank.Infrastructure
             ApplicationData.Current.LocalSettings.Values.Remove(key);
         }
 
-        public void Add(string key, object value)
+        public void Add<T>(string key, T value)
         {
             string jsonValue = JsonConvert.SerializeObject(value);
             ApplicationData.Current.LocalSettings.Values[key] = jsonValue;

@@ -14,15 +14,14 @@ namespace UsBank.ViewModels.Infrastructure
             _storageManager = storageManager;
         }
 
-        public User User
+        public User CurrentUser
         {
             get 
             {
                 return GetUserFromSession();
             }
         }
-
-
+        
         private User GetUserFromSession()
         {
             var user = _storageManager.GetValue<User>(Constants.UserKey);
@@ -30,7 +29,7 @@ namespace UsBank.ViewModels.Infrastructure
         }
         public void Setuser(User user)
         {
-            _storageManager.Add(Constants.UserKey, user);
+            _storageManager.Add<User>(Constants.UserKey, user);
         }
     }
 }

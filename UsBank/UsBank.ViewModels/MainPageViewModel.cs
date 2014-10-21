@@ -17,7 +17,7 @@ namespace UsBank.ViewModels
         {
             get
             {
-                var user = _accountManager.User;
+                var user = _accountManager.CurrentUser;
                 return user != null ? user.UserId : String.Empty;
             }
         }
