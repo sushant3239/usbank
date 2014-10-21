@@ -9,7 +9,7 @@
     mc:Ignorable="d"
     xmlns:triggers="using:WinRT.Triggers"
     DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=MainPageViewModel}">
-    
+
     <Grid>
         <!--<Grid.Background>
             <ImageBrush ImageSource="/Assets/WorldMap_BG.png"/>
@@ -68,6 +68,13 @@
                         </Grid>
                     </StackPanel>
                 </DataTemplate>
+            </HubSection>
+            <HubSection Width="585" Background="#f2e7c9">
+                <HubSection.Header>
+                    <Grid>
+                        <TextBlock Text="{Binding UserName}"/>
+                    </Grid>
+                </HubSection.Header>
             </HubSection>
         </Hub>
     </Grid>

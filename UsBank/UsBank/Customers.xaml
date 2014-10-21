@@ -8,6 +8,17 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+        <Hub>
+            <HubSection>
+                <HubSection.Header>
+                    <Grid>
+                        <TextBlock Text="Customers"/>
+                    </Grid>
+                </HubSection.Header>
+                <DataTemplate>
+                    
+                </DataTemplate>
+            </HubSection>
+        </Hub>
     </Grid>
 </Page>

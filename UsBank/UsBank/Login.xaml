@@ -1,0 +1,41 @@
+﻿<Page
+    x:Class="UsBank.Login"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UsBank"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=LoginViewModel}">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Hub>
+            <HubSection Width="900"></HubSection>
+            <HubSection HorizontalAlignment="Right" Width="465">
+                <HubSection.Header>
+                    <Grid>
+                        <TextBlock Text="Bankers Desktop"/>
+                    </Grid>
+                </HubSection.Header>
+                <HubSection.Background>
+                    <SolidColorBrush Color="#01aaad"/>
+                </HubSection.Background>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="Login" FontSize="30"  Margin="0 20 0 0"/>
+                        <StackPanel Margin="0 60 0 0">
+                            <TextBlock Text="Login ID" FontSize="22" Foreground="#c6e7e7"/>
+                            <TextBox Text="{Binding UserId, Mode=TwoWay}" Margin="0 5 0 30"/>
+                            
+                            <TextBlock Text="Password" FontSize="22" Foreground="#c6e7e7"/>
+                            <TextBox Margin="0 5 0 30" Text="{Binding UserPassword, Mode=TwoWay}"/>
+
+                            <Button Command="{Binding LoginCommand}"
+                                Background="White" Content="Enter" FontSize="22" Foreground="#01aaad"/>
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </HubSection>
+        </Hub>
+    </Grid>
+</Page>

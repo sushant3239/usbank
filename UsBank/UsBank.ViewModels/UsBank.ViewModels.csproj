@@ -101,6 +101,13 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="CustomersViewModel.cs" />
+    <Compile Include="Infrastructure\AccountManager.cs" />
+    <Compile Include="Infrastructure\Constants.cs" />
+    <Compile Include="Infrastructure\Interfaces\INavigationService.cs" />
+    <Compile Include="Infrastructure\Interfaces\ISessionManager.cs" />
+    <Compile Include="Infrastructure\Interfaces\ITypeResolver.cs" />
+    <Compile Include="LoginViewModel.cs" />
     <Compile Include="MainPageViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

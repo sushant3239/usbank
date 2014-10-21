@@ -21,5 +21,13 @@ namespace UsBank
                 return _typeResolver.Resolve<MainPageViewModel>();
             }
         }
+
+        public LoginViewModel LoginViewModel
+        {
+            get
+            {
+                return _typeResolver.Resolve<LoginViewModel>();
+            }
+        }
     }
 }

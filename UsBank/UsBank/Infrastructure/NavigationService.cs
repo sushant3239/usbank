@@ -16,5 +16,11 @@ namespace UsBank.Infrastructure
         {
             rootFrame.Navigate(typeof(Customers));
         }
+
+
+        public void NavigateToMainPage()
+        {
+            rootFrame.Navigate(typeof(MainPage));
+        }
     }
 }

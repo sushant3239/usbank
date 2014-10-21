@@ -102,8 +102,8 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="Data\USBankMSCRMEntities.cs" />
-    <Compile Include="Infrastructure\INavigationService.cs" />
-    <Compile Include="Infrastructure\ITypeResolver.cs" />
+    <Compile Include="IAccountManager.cs" />
+    <Compile Include="Model\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
