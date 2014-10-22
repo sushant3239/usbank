@@ -8,6 +8,7 @@
     <SolidColorBrush x:Key="MenuItemFontBrush" Color="#083939"/>
     <SolidColorBrush x:Key="SectionHeaderBrush" Color="#8f8f8f"/>
     <SolidColorBrush x:Key="InfoTextBrush" Color="#6a6a6a"/>
+    <SolidColorBrush x:Key="Highlight" Color="#f2e7c9"/>
     
     <Style TargetType="TextBlock" x:Key="MenuItemStyle">
         <Setter Property="FontSize" Value="20"/>
@@ -35,6 +36,10 @@
         <Setter Property="FontSize" Value="15"/>
         <Setter Property="Foreground" Value="{StaticResource InfoTextBrush}"/>
         <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+    
+    <Style TargetType="TextBlock" x:Name="PageHeaderStyle">
+        <Setter Property="FontSize" Value="35"/>
     </Style>
     
 </ResourceDictionary>

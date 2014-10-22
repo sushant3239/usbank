@@ -45,8 +45,8 @@
             <StackPanel Grid.Column="1" Background="{StaticResource MainBackgroundBrush}">
                 <Grid Margin="40">
                     <StackPanel>
-                        <TextBlock Text="Bankers Desktop" Margin="0 0 0 60"
-                            Style="{StaticResource HeaderTextBlockStyle}"/> 
+                        <TextBlock Text="Bankers Desktop" Margin="0 0 0 40"
+                            Style="{StaticResource PageHeaderStyle}"/> 
                         
                         <StackPanel Orientation="Vertical">
                             <TextBlock Text="Login" FontSize="30"  Margin="0 20 0 40"/>

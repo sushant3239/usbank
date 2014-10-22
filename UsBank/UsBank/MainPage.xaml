@@ -30,7 +30,7 @@
             <Grid x:Name="TitleGrid">
                 <TextBlock Text="Bankers Desktop"
                     VerticalAlignment="Bottom"
-                    Style="{StaticResource HeaderTextBlockStyle}"/>
+                    Style="{StaticResource PageHeaderStyle}"/>
             </Grid>
             <StackPanel>
                 <TextBlock 

@@ -29,18 +29,18 @@
                     <ColumnDefinition Width="120"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Button Margin="39,59,39,0"
+                <Button Margin="39,59,10,0"
+                        HorizontalAlignment="Right"
                         Command="{Binding Source={StaticResource BackNavigationHelper},Path=GoBackCommand}"
                     VerticalAlignment="Top"
                     Style="{StaticResource NavigationBackButtonNormalStyle}"/>
-                <TextBlock Text="Customers"
-                    Grid.Column="1" VerticalAlignment="Bottom"
-                    Style="{StaticResource HeaderTextBlockStyle}"/>
+                <TextBlock Text="Customers" Foreground="{StaticResource Highlight}" Style="{StaticResource PageHeaderStyle}"
+                    Grid.Column="1" VerticalAlignment="Bottom"/>
             </Grid>
-            <StackPanel Margin="40" Grid.Row="1">
-                <TextBlock Text="Leades" Style="{StaticResource MenuItemStyle}"/>
-                <TextBlock Text="Accounts" Style="{StaticResource MenuItemStyle}"/>
-                <TextBlock Text="Contacts" Style="{StaticResource MenuItemStyle}"/>
+            <StackPanel Margin="80 40" Grid.Row="1">
+                <TextBlock Text="> Leades" Style="{StaticResource MenuItemStyle}" Foreground="{StaticResource Highlight}"/>
+                <TextBlock Text="> Accounts" Style="{StaticResource MenuItemStyle}"/>
+                <TextBlock Text="> Contacts" Style="{StaticResource MenuItemStyle}"/>
             </StackPanel>
         </StackPanel>
         <Grid Grid.Column="1" Grid.RowSpan="2" Background="{StaticResource ContentBackgroundBrush}">
@@ -71,7 +71,7 @@
                         <GridView.ItemTemplate>
                             <DataTemplate>
                                 <controls:UserDetails UserImage="/Assets/Pic2.png"
-                                    FirstName="{Binding username}"/>
+                                    FirstName="{Binding username,Converter={StaticResource NameToLineBreakConverter}}"/>
                             </DataTemplate>
                         </GridView.ItemTemplate>
                     </GridView>

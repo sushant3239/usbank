@@ -167,7 +167,7 @@ namespace UsBank.ViewModels
 
         private async void GetLeadDetails()
         {
-           LeadDetails = await _service.GetLeadDetailsInfo(SelectedLead.LeadName);
+            LeadDetails = await _service.GetLeadDetailsInfo(SelectedLead.LeadName);
         }
 
         private async void GetLeads()
@@ -180,7 +180,7 @@ namespace UsBank.ViewModels
             Users = await _service.GetUserData(_accountManager.CurrentUser.UserId);
         }
     }
-
+    
     public class DummyLead
     {
         public string LeadId { get; set; }

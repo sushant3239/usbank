@@ -125,6 +125,7 @@
     <Compile Include="Controls\UserDetails.xaml.cs">
       <DependentUpon>UserDetails.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\NameToLineBreakConverter.cs" />
     <Compile Include="Converters\NullToVisibilityConverter.cs" />
     <Compile Include="Customers.xaml.cs">
       <DependentUpon>Customers.xaml</DependentUpon>

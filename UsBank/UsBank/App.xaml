@@ -13,6 +13,7 @@
             <local:ViewModelLocator x:Key="ViewModelLocator"/>
             <Infrastructure:BackNavigationHelper x:Key="BackNavigationHelper"/>
             <Convertes:NullToVisibilityConverter x:Key="NullToVisibilityConverter"/>
+            <Convertes:NameToLineBreakConverter x:Key="NameToLineBreakConverter"/>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

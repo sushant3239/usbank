@@ -56,7 +56,6 @@ namespace UsBank.Core.Services
 
         public async Task<List<user>> GetUserData(string username)
         {
-            await Task.Delay(2000);
             return new List<user>
             {
                 new user
