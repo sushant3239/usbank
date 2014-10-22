@@ -53,7 +53,7 @@
 
                             <TextBlock Text="UserName" FontSize="22" Foreground="#c6e7e7"  />
                             <TextBox x:Name="NumericTextBox" Text="{Binding UserName, Mode=TwoWay}" Margin="0,5" PlaceholderText="Enter your user name" 
-                                extensions:FieldValidationExtensions.Format="NonEmpty" 
+                                extensions:FieldValidationExtensions.Format="Numeric" 
                                 extensions:FieldValidationExtensions.InvalidBrush="Pink"
                                      extensions:FieldValidationExtensions.NumericErrorMessage="Login ID should be numberic"/>
                             <TextBlock Style="{StaticResource ValidationErrorLabelStyle}" Margin="0" 
