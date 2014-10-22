@@ -6,7 +6,27 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
+    xmlns:extensions="using:WinRTXamlToolkit.Controls.Extensions"
     DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=LoginViewModel}">
+
+    <Page.Resources>
+        <Style
+            x:Key="ValidationErrorLabelStyle"
+            TargetType="TextBlock">
+            <Setter
+                Property="Foreground"
+                Value="Red" />
+            <Setter
+                Property="FontSize"
+                Value="14" />
+            <Setter
+                Property="FontWeight"
+                Value="Bold" />
+            <Setter
+                Property="Margin"
+                Value="5" />
+        </Style>
+    </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid>
@@ -23,18 +43,42 @@
             <StackPanel Grid.Column="1" Background="#01aaad">
                 <Grid Margin="40">
                     <StackPanel>
-                        <TextBlock Text="Bankers Desktop" FontSize="45"/>
+                        <TextBlock Text="Bankers Desktop" FontSize="45"/>                        
                         
-                        <TextBlock Text="Login" FontSize="30"  Margin="0 20 0 40"/>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="Login" FontSize="30"  Margin="0 20 0 40"/>
+
+                            <TextBlock Text="Login ID" FontSize="22" Foreground="#c6e7e7"  />
+                            <TextBox x:Name="NumericTextBox" Text="{Binding UserId, Mode=TwoWay}" Margin="0,5" PlaceholderText="Enter your network id" 
+                                extensions:FieldValidationExtensions.Format="Numeric" 
+                                extensions:FieldValidationExtensions.InvalidBrush="Pink"
+                                     extensions:FieldValidationExtensions.NumericErrorMessage="Login ID should be numberic"/>
+                            <TextBlock Style="{StaticResource ValidationErrorLabelStyle}" Margin="0" 
+                                       Text="{Binding (extensions:FieldValidationExtensions.ValidationMessage), ElementName=NumericTextBox}" 
+                                       Visibility="{Binding (extensions:FieldValidationExtensions.ValidationMessageVisibility), ElementName=NumericTextBox}"  />
                         
-                        <TextBlock Text="Login ID" FontSize="22" Foreground="#c6e7e7"/>
-                        <TextBox Text="{Binding UserId, Mode=TwoWay}" Margin="0 5 0 30"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Vertical">
+
+                            <TextBlock Text="Password" FontSize="22" Foreground="#c6e7e7" />
+                            <PasswordBox x:Name="PwdTextBox" Password="{Binding UserPassword, Mode=TwoWay}" PlaceholderText="Enter your network password" Margin="0,5"  
+                                extensions:FieldValidationExtensions.Format="Any" 
+                                extensions:FieldValidationExtensions.InvalidBrush="Pink"
+                                     extensions:FieldValidationExtensions.NonEmptyErrorMessage="Password should not be empty"
+                                         extensions:FieldValidationExtensions.ValidationMessageVisibility="Collapsed"/>
+
+                            <TextBlock Style="{StaticResource ValidationErrorLabelStyle}" Margin="0" 
+                                       Text="{Binding (extensions:FieldValidationExtensions.ValidationMessage), ElementName=PwdTextBox}" 
+                                       Visibility="{Binding (extensions:FieldValidationExtensions.ValidationMessageVisibility), ElementName=PwdTextBox}"  />
+
+                        </StackPanel>
                         
-                        <TextBlock Text="Password" FontSize="22" Foreground="#c6e7e7"/>
-                        <TextBox Margin="0 5 0 30" Text="{Binding UserPassword, Mode=TwoWay}"/>
+                        <!--<TextBlock Text="Password" FontSize="22" Foreground="#c6e7e7" Margin="0,30,0,0"/>
+                        <PasswordBox Margin="0 5 0 30" Password="{Binding UserPassword, Mode=TwoWay}" PlaceholderText="Enter your network password"/>-->
                         
                         <Button Command="{Binding LoginCommand}"
-                                Background="White" Content="Enter" FontSize="22" Foreground="#01aaad"/>
+                                Background="White" Content="Enter" FontSize="22" Foreground="#01aaad" Margin="0,5,0,0"/>
                     </StackPanel>
                 </Grid>
             </StackPanel>
