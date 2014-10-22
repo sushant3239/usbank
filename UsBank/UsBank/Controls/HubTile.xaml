@@ -10,12 +10,19 @@
     d:DesignWidth="130"
     x:Name="RootHubTile">
 
-    <StackPanel x:Name="RootPanel" Background="#137677" Height="130" Width="130" Tapped="StackPanelTapped">
-        <TextBlock HorizontalAlignment="Center"
+    <Grid x:Name="RootPanel" Background="#137677" Height="130" Width="130" Tapped="StackPanelTapped">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock HorizontalAlignment="Center"            
             FontSize="16"
+            Margin="0 5 0 10"
+            VerticalAlignment="Center"
             Text="{Binding ElementName=RootHubTile, Path=HeaderText}" Foreground="#0a5051"/>
         <Image Stretch="None"
-            Margin="8"
+            Grid.Row="1"
+            VerticalAlignment="Top"
             Source="{Binding ElementName=RootHubTile, Path=ActiveTileImage}"/>
-    </StackPanel>
+    </Grid>
 </UserControl>

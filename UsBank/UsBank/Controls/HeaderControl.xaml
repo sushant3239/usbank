@@ -11,16 +11,13 @@
     d:DesignWidth="400"
     x:Name="RootHeaderControl">
 
-    <Grid Height="120">
-        <Grid.Background>
-            <SolidColorBrush Color="#e2cdb1"/>
-        </Grid.Background>
-        <Grid HorizontalAlignment="Right">
+    <Grid Height="120" Background="{StaticResource HeaderBackgroundBrush}">       
+        <Grid HorizontalAlignment="Right" Margin="30 20">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <StackPanel VerticalAlignment="Center">
+            <StackPanel VerticalAlignment="Center" Margin="0 0 20 0">
                 <TextBlock Text="{Binding ElementName=RootHeaderControl,Path=UserName}" FontSize="20" HorizontalAlignment="Right"/>
                 <TextBlock Text="{Binding ElementName=RootHeaderControl,Path=UserRole}" FontSize="20" HorizontalAlignment="Right"/>
             </StackPanel>

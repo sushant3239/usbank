@@ -1,0 +1,40 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UsBank.AppStyles">
+    <SolidColorBrush x:Key="MainBackgroundBrush" Color="#01aaad"/>
+    <SolidColorBrush x:Key="ContentBackgroundBrush" Color="#f2e7c9"/>
+    <SolidColorBrush x:Key="HeaderBackgroundBrush" Color="#e2cdb1"/>
+    <SolidColorBrush x:Key="MenuItemFontBrush" Color="#083939"/>
+    <SolidColorBrush x:Key="SectionHeaderBrush" Color="#8f8f8f"/>
+    <SolidColorBrush x:Key="InfoTextBrush" Color="#6a6a6a"/>
+    
+    <Style TargetType="TextBlock" x:Key="MenuItemStyle">
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="Margin" Value="15"/>
+        <Setter Property="Foreground" Value="{StaticResource MenuItemFontBrush}"/>
+    </Style>
+    
+    <Style TargetType="TextBlock" x:Key="TextFieldStyle">
+        <Setter Property="Foreground" Value="#6a6a6a"/>
+        <Setter Property="FontSize" Value="15" />        
+    </Style>
+    
+    <Style TargetType="TextBlock" x:Key="SectionHeaderStyle">
+        <Setter Property="Foreground" Value="{StaticResource SectionHeaderBrush}"/>
+        <Setter Property="FontSize" Value="25" />
+    </Style>
+    
+    <Style TargetType="TextBlock" x:Key="FAQStyle">
+        <Setter Property="FontSize" Value="18"/>        
+        <Setter Property="Foreground" Value="{StaticResource InfoTextBrush}"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+    
+    <Style TargetType="TextBlock" x:Key="FAQAnswerStyle">
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="Foreground" Value="{StaticResource InfoTextBrush}"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+    
+</ResourceDictionary>

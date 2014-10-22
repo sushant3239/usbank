@@ -102,8 +102,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="IAccountManager.cs" />
+    <Compile Include="Model\StubbedData.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\StubbedDataService.cs" />
+    <Compile Include="Utilities\DateParser.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="bin\Debug\UsBank.Core.pri" />

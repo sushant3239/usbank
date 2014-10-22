@@ -38,19 +38,22 @@
                 <Grid.Background>
                     <ImageBrush ImageSource="/Assets/BG_Image_LoginScreen.png"/>
                 </Grid.Background>
+                <Image HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                       Margin="50"
+                    Source="/Assets/USB_Logo.png" Stretch="None"/>
             </Grid>
-
-            <StackPanel Grid.Column="1" Background="#01aaad">
+            <StackPanel Grid.Column="1" Background="{StaticResource MainBackgroundBrush}">
                 <Grid Margin="40">
                     <StackPanel>
-                        <TextBlock Text="Bankers Desktop" FontSize="45"/>                        
+                        <TextBlock Text="Bankers Desktop" Margin="0 0 0 60"
+                            Style="{StaticResource HeaderTextBlockStyle}"/> 
                         
                         <StackPanel Orientation="Vertical">
                             <TextBlock Text="Login" FontSize="30"  Margin="0 20 0 40"/>
 
-                            <TextBlock Text="Login ID" FontSize="22" Foreground="#c6e7e7"  />
-                            <TextBox x:Name="NumericTextBox" Text="{Binding UserId, Mode=TwoWay}" Margin="0,5" PlaceholderText="Enter your network id" 
-                                extensions:FieldValidationExtensions.Format="Numeric" 
+                            <TextBlock Text="UserName" FontSize="22" Foreground="#c6e7e7"  />
+                            <TextBox x:Name="NumericTextBox" Text="{Binding UserName, Mode=TwoWay}" Margin="0,5" PlaceholderText="Enter your user name" 
+                                extensions:FieldValidationExtensions.Format="NonEmpty" 
                                 extensions:FieldValidationExtensions.InvalidBrush="Pink"
                                      extensions:FieldValidationExtensions.NumericErrorMessage="Login ID should be numberic"/>
                             <TextBlock Style="{StaticResource ValidationErrorLabelStyle}" Margin="0" 
@@ -82,39 +85,6 @@
                     </StackPanel>
                 </Grid>
             </StackPanel>
-
         </Grid>
-        <!--<Hub>
-            <HubSection Width="900">
-                <HubSection.Background>
-                    <ImageBrush ImageSource="/Assets/BG_Image_LoginScreen.png"/>
-                </HubSection.Background>                
-            </HubSection>
-            <HubSection HorizontalAlignment="Right" Width="465">
-                <HubSection.Header>
-                    <Grid>
-                        <TextBlock Text="Bankers Desktop"/>
-                    </Grid>
-                </HubSection.Header>
-                <HubSection.Background>
-                    <SolidColorBrush Color="#01aaad"/>
-                </HubSection.Background>
-                <DataTemplate>
-                    <StackPanel>
-                        <TextBlock Text="Login" FontSize="30"  Margin="0 20 0 0"/>
-                        <StackPanel Margin="0 60 0 0">
-                            <TextBlock Text="Login ID" FontSize="22" Foreground="#c6e7e7"/>
-                            <TextBox Text="{Binding UserId, Mode=TwoWay}" Margin="0 5 0 30"/>
-                            
-                            <TextBlock Text="Password" FontSize="22" Foreground="#c6e7e7"/>
-                            <TextBox Margin="0 5 0 30" Text="{Binding UserPassword, Mode=TwoWay}"/>
-
-                            <Button Command="{Binding LoginCommand}"
-                                Background="White" Content="Enter" FontSize="22" Foreground="#01aaad"/>
-                        </StackPanel>
-                    </StackPanel>
-                </DataTemplate>
-            </HubSection>
-        </Hub>-->
     </Grid>
 </Page>

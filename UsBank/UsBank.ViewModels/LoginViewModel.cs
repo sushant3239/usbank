@@ -10,7 +10,7 @@ namespace UsBank.ViewModels
 {
     public class LoginViewModel : BindableBase
     {
-        private string _userId = String.Empty;
+        private string _userName = String.Empty;
         private string _userPassword = String.Empty;
         private IAccountManager _accountManager;
 
@@ -24,17 +24,17 @@ namespace UsBank.ViewModels
             LoginCommand = new DelegateCommand(Login, CanLogin);
         }
 
-        public string UserId
+        public string UserName
         {
-            get { return _userId; }
+            get { return _userName; }
             set
             {
-                if (_userId == value)
+                if (_userName == value)
                 {
                     return;
                 }
-                _userId = value;
-                OnPropertyChanged(() => UserId);
+                _userName = value;
+                OnPropertyChanged(() => UserName);
                 LoginCommand.RaiseCanExecuteChanged();
             }
         }
@@ -57,13 +57,13 @@ namespace UsBank.ViewModels
 
         private void Login()
         {
-            _accountManager.Setuser(new User { UserId = UserId, UserPassword = UserPassword });
+            _accountManager.Setuser(new User { UserId = UserName, UserPassword = UserPassword });
             _navigationService.NavigateToMainPage();
         }
 
         private bool CanLogin()
         {
-            return !String.IsNullOrEmpty(UserId) && !String.IsNullOrEmpty(UserPassword);
+            return !String.IsNullOrEmpty(UserName) && !String.IsNullOrEmpty(UserPassword);
         }
     }
 }

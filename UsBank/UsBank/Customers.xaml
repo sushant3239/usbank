@@ -15,7 +15,6 @@
                 <EntranceThemeTransition/>
             </TransitionCollection>
         </Grid.ChildrenTransitions>
-        
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -24,7 +23,7 @@
             <ColumnDefinition x:Name="primaryColumn" Width="420"/>
             <ColumnDefinition x:Name="secondaryColumn" Width="*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel Background="#01aaad" Grid.Row="1">
+        <StackPanel Background="{StaticResource MainBackgroundBrush}" Grid.Row="1">
             <Grid x:Name="TitleGrid">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="120"/>
@@ -34,55 +33,98 @@
                         Command="{Binding Source={StaticResource BackNavigationHelper},Path=GoBackCommand}"
                     VerticalAlignment="Top"
                     Style="{StaticResource NavigationBackButtonNormalStyle}"/>
-                <TextBlock Text="Customers" Grid.Column="1" Margin="0 0 0 0" VerticalAlignment="Bottom" Style="{StaticResource HeaderTextBlockStyle}"/>
+                <TextBlock Text="Customers"
+                    Grid.Column="1" VerticalAlignment="Bottom"
+                    Style="{StaticResource HeaderTextBlockStyle}"/>
             </Grid>
             <StackPanel Margin="40" Grid.Row="1">
-                <TextBlock Text="Leades" FontSize="40" Margin="30"/>
-                <TextBlock Text="Accounts" FontSize="40" Margin="30"/>
-                <TextBlock Text="Contacts" FontSize="40" Margin="30"/>
+                <TextBlock Text="Leades" Style="{StaticResource MenuItemStyle}"/>
+                <TextBlock Text="Accounts" Style="{StaticResource MenuItemStyle}"/>
+                <TextBlock Text="Contacts" Style="{StaticResource MenuItemStyle}"/>
             </StackPanel>
         </StackPanel>
-        <Grid Grid.Column="1" Grid.RowSpan="2">
+        <Grid Grid.Column="1" Grid.RowSpan="2" Background="{StaticResource ContentBackgroundBrush}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <controls:HeaderControl />
-            <Grid Grid.Row="1" Background="#f2e7c9"
+            <Grid Grid.Row="1"
+                x:Name="RightPanel"
+                Margin="0 40 0 0"
                 DataContext="{Binding Source={StaticResource ViewModelLocator},Path=LeadsViewModel}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-                <GridView SelectedItem="{Binding SelectedLeadDetail,Mode=TwoWay}"
-                    ItemsSource="{Binding Leads}" x:Name="leadsGridView">
-                    <triggers:Interactions.Triggers>
-                        <triggers:EventTrigger EventName="SelectionChanged">
-                            <triggers:InvokeCommandAction Command="{Binding LeadDetailsCommand}"/>
-                        </triggers:EventTrigger>
-                    </triggers:Interactions.Triggers>
-                    <GridView.ItemTemplate>
-                        <DataTemplate>
-                            <controls:UserDetails UserImage="/Assets/Pic2.png"
-                                FirstName="{Binding FirstName}" LastName="{Binding LastName}"/>
-                        </DataTemplate>
-                    </GridView.ItemTemplate>
-                </GridView>
-                <ItemsControl ItemsSource="{Binding SelectedLeadDetails}" Grid.Column="1">
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Text="{Binding FullName}" FontSize="15"  Margin="10 0"/>
-                                <TextBlock Grid.Column="1" Text="{Binding ProductAndServices}" FontSize="15"/>
-                            </Grid>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
+                <StackPanel Margin="30 0 60 0">
+                    <TextBlock Text="Teller" Margin="0 0 0 30"
+                               Style="{StaticResource SectionHeaderStyle}"/>
+                    <GridView SelectedItem="{Binding SelectedUser,Mode=TwoWay}"
+                    ItemsSource="{Binding Users}" x:Name="leadsGridView">
+                        <triggers:Interactions.Triggers>
+                            <triggers:EventTrigger EventName="SelectionChanged">
+                                <triggers:InvokeCommandAction Command="{Binding GetLeadsCommand}"/>
+                            </triggers:EventTrigger>
+                        </triggers:Interactions.Triggers>
+                        <GridView.ItemTemplate>
+                            <DataTemplate>
+                                <controls:UserDetails UserImage="/Assets/Pic2.png"
+                                    FirstName="{Binding username}"/>
+                            </DataTemplate>
+                        </GridView.ItemTemplate>
+                    </GridView>
+                </StackPanel>
+                <StackPanel Margin="0 0 60 0" Grid.Column="1"
+                    Visibility="{Binding Leads,Converter={StaticResource NullToVisibilityConverter}}">
+                    <TextBlock Text="Leads" Margin="0 0 0 30"
+                               Style="{StaticResource SectionHeaderStyle}"/>
+                    <GridView ItemsSource="{Binding Leads}"                          
+                          SelectedItem="{Binding SelectedLead,Mode=TwoWay}">
+                        <triggers:Interactions.Triggers>
+                            <triggers:EventTrigger EventName="SelectionChanged">
+                                <triggers:InvokeCommandAction Command="{Binding GetLeadDetailsCommand}"/>
+                            </triggers:EventTrigger>
+                        </triggers:Interactions.Triggers>
+                        <GridView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Margin="15" Style="{StaticResource TextFieldStyle}"
+                                    Text="{Binding LeadName}"/>
+                                    <TextBlock Margin="15" Style="{StaticResource TextFieldStyle}"
+                                    Text="{Binding ProductName}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridView.ItemTemplate>
+                    </GridView>
+                </StackPanel>
+                <StackPanel 
+                    Visibility="{Binding LeadDetails,Converter={StaticResource NullToVisibilityConverter}}"
+                    Grid.Column="2">
+                    <StackPanel DataContext="{Binding LeadDetails}">
+                        <TextBlock Text="Details" 
+                        Style="{StaticResource SectionHeaderStyle}" Margin="0 0 0 30"/>
+
+                        <TextBlock Text="LeadId" Style="{StaticResource TextFieldStyle}"/>
+                        <TextBox Margin="0 5 0 25" Text="{Binding leadNumber}"/>
+
+                        <TextBlock Text="Full Name" Style="{StaticResource TextFieldStyle}"/>
+                        <TextBox Margin="0 5 0 25" Text="{Binding FullName}"/>
+
+                        <TextBlock Text="Gender" Style="{StaticResource TextFieldStyle}"/>
+                        <TextBox Margin="0 5 0 25" Text="{Binding Gender}"/>
+
+                        <TextBlock Text="Date of Birth" Style="{StaticResource TextFieldStyle}"/>
+                        <TextBox Margin="0 5 0 25" Text="{Binding DOB}"/>
+
+                        <TextBlock Text="Product and Services" Style="{StaticResource TextFieldStyle}"/>
+                        <TextBox Margin="0 5 0 25" Text="{Binding Product}"/>
+
+                        <TextBlock Text="Address" Style="{StaticResource TextFieldStyle}"/>
+                        <TextBox Margin="0 5 0 25" Text="{Binding Address}"/>
+                    </StackPanel>
+                </StackPanel>
             </Grid>
         </Grid>
     </Grid>
