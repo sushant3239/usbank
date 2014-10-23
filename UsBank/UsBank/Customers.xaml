@@ -26,19 +26,19 @@
         <StackPanel Background="{StaticResource MainBackgroundBrush}" Grid.Row="1">
             <Grid x:Name="TitleGrid">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="120"/>
+                    <ColumnDefinition Width="90"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Button Margin="39,59,10,0"
-                        HorizontalAlignment="Right"
+                <Button Margin="20,59,0,0"
+                        HorizontalAlignment="Left"
                         Command="{Binding Source={StaticResource BackNavigationHelper},Path=GoBackCommand}"
-                    VerticalAlignment="Top"
+                    VerticalAlignment="Stretch"
                     Style="{StaticResource NavigationBackButtonNormalStyle}"/>
                 <TextBlock Text="Customers" Foreground="{StaticResource Highlight}" Style="{StaticResource PageHeaderStyle}"
                     Grid.Column="1" VerticalAlignment="Bottom"/>
             </Grid>
             <StackPanel Margin="80 40" Grid.Row="1">
-                <TextBlock Text="> Leades" Style="{StaticResource MenuItemStyle}" Foreground="{StaticResource Highlight}"/>
+                <TextBlock Text="> Leads" Style="{StaticResource MenuItemStyle}" Foreground="{StaticResource Highlight}"/>
                 <TextBlock Text="> Accounts" Style="{StaticResource MenuItemStyle}"/>
                 <TextBlock Text="> Contacts" Style="{StaticResource MenuItemStyle}"/>
             </StackPanel>

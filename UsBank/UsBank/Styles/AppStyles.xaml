@@ -7,6 +7,7 @@
     <SolidColorBrush x:Key="HeaderBackgroundBrush" Color="#e2cdb1"/>
     <SolidColorBrush x:Key="MenuItemFontBrush" Color="#083939"/>
     <SolidColorBrush x:Key="SectionHeaderBrush" Color="#8f8f8f"/>
+    <SolidColorBrush x:Key="MainHeaderPressedBrush" Color="#55BABB"/>
     <SolidColorBrush x:Key="InfoTextBrush" Color="#6a6a6a"/>
     <SolidColorBrush x:Key="Highlight" Color="#f2e7c9"/>
     
@@ -20,7 +21,12 @@
         <Setter Property="Foreground" Value="#6a6a6a"/>
         <Setter Property="FontSize" Value="15" />        
     </Style>
-    
+
+    <Style TargetType="TextBlock" x:Key="MainHeaderStylePressed">
+        <Setter Property="Foreground" Value="{StaticResource MainHeaderPressedBrush}"/>
+        <Setter Property="FontSize" Value="42" />
+    </Style>
+
     <Style TargetType="TextBlock" x:Key="SectionHeaderStyle">
         <Setter Property="Foreground" Value="{StaticResource SectionHeaderBrush}"/>
         <Setter Property="FontSize" Value="25" />
