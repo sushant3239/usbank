@@ -61,17 +61,20 @@ namespace UsBank.Core.Services
                 new user
                 {
                     userid = Guid.Empty,
-                    username = "Yuvraj Nikam",
+                    username = "Lary Johnon",
+                    userImage = "/Assets/Pic3.png"
                 },
                 new user
                 {
                     userid = Guid.Empty,
-                    username = "Pankaj Jindal",
+                    username = "Nicole Anderson",
+                    userImage = "/Assets/Pic2.png"
                 },
                 new user
                 {
                     userid = Guid.Empty,
-                    username = "Rupali Baviskar",
+                    username = "Brian David",
+                    userImage = "/Assets/Pic1.png"
                 },
             };
         }

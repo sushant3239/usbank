@@ -29,7 +29,7 @@ namespace UsBank.Controls
                 var typeResolver = Container.TypeResolver.Instance;
                 var accountManager = typeResolver.Resolve<IAccountManager>();
                 var user = accountManager.CurrentUser;
-                UserName = user.UserId;
+                UserName = "Cathy Liz"; //user.UserId;
                 UserRole = "Region Manager";
             };
         }

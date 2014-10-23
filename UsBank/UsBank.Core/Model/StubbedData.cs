@@ -6,6 +6,8 @@ namespace UsBank.Core.Stubbed
     {
         public Guid userid { get; set; }
         public string username { get; set; }
+        // Added temporarily
+        public string userImage { get; set; }
     }
     public class lead
     {

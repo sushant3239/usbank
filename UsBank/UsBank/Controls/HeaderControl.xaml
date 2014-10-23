@@ -18,10 +18,10 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <StackPanel VerticalAlignment="Center" Margin="0 0 20 0">
-                <TextBlock Text="{Binding ElementName=RootHeaderControl,Path=UserName}" FontSize="20" HorizontalAlignment="Right"/>
-                <TextBlock Text="{Binding ElementName=RootHeaderControl,Path=UserRole}" FontSize="20" HorizontalAlignment="Right"/>
+                <TextBlock Text="{Binding ElementName=RootHeaderControl,Path=UserName}" Style="{StaticResource UserHeaderTitleStyle}"/>
+                <TextBlock Text="{Binding ElementName=RootHeaderControl,Path=UserRole}" Style="{StaticResource UserHeaderTitleStyle}"/>
             </StackPanel>
-            <Image Grid.Column="1" Source="/Assets/Pic1.png" Width="70" Height="70"/>
+            <Image Grid.Column="1" Source="/Assets/ProfilePic.png" Width="70" Height="70"/>
         </Grid>
     </Grid>
 </UserControl>
