@@ -9,9 +9,50 @@
     <SolidColorBrush x:Key="SectionHeaderBrush" Color="#8f8f8f"/>
     <SolidColorBrush x:Key="MainHeaderPressedBrush" Color="#55BABB"/>
     <SolidColorBrush x:Key="InfoTextBrush" Color="#6a6a6a"/>
+    <SolidColorBrush x:Key="TextHightlightBrush" Color="#01aaad"/>
     <SolidColorBrush x:Key="Highlight" Color="#f2e7c9"/>
     <SolidColorBrush x:Key="UserHeaderTitleBrush" Color="#BD978D"/>
-    
+    <SolidColorBrush x:Key="CustomizedListViewItemPresenterHighlightBrush" Color="#444617B4"/>
+
+    <Thickness x:Key="CustomizedListViewItemPresenterSelectedBorderThickness">0,0,0,0</Thickness>
+
+    <DataTemplate x:Key="ImageTextLandingNarrowTemplate">
+        <StackPanel Orientation="Horizontal" Width="175" Height="80">
+            <Border Height="75" Width="75" Margin="0,0,0,0">
+                <Image Height="70" Width="70" Source="{Binding userImage}" />
+            </Border>
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="0,10,0,0">                
+                <TextBlock Text="{Binding username,Converter={StaticResource NameToLineBreakConverter}}"
+                       Margin="10,0,0,0" Width="180" Height="42" 
+                       HorizontalAlignment="Left" TextTrimming="WordEllipsis" TextWrapping="Wrap"/>
+            </StackPanel>
+        </StackPanel>
+    </DataTemplate>
+
+    <Style x:Key="CustomizedListViewItemPresenterTemplate" TargetType="ListViewItem">
+        <Setter Property="Foreground" Value="#6a6a6a" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ListViewItem">
+                    <ListViewItemPresenter SelectionCheckMarkVisualEnabled="False" 
+                                           SelectedBackground="{StaticResource ContentBackgroundBrush}" 
+                                           SelectedForeground="{StaticResource MainBackgroundBrush}"
+                                           />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <DataTemplate x:Key="TextLandingNarrowTemplate">
+        <StackPanel Orientation="Horizontal" Width="325">
+            <TextBlock Margin="10"
+                                    Text="{Binding LeadName}" TextTrimming="WordEllipsis" TextAlignment="Left" Width="150" />
+            <TextBlock Margin="10" 
+                                    Text="{Binding ProductName}" TextTrimming="WordEllipsis" TextAlignment="Left" Width="150" />
+        </StackPanel>
+    </DataTemplate> 
+
+
     <Style TargetType="TextBlock" x:Key="MenuItemStyle">
         <Setter Property="FontSize" Value="16"/>
         <Setter Property="Margin" Value="15"/>

@@ -15,6 +15,21 @@
             <Convertes:NullToVisibilityConverter x:Key="NullToVisibilityConverter"/>
             <Convertes:NameToLineBreakConverter x:Key="NameToLineBreakConverter"/>
             <Convertes:DateFormatConverter x:Key="DateFormatConverter"/>
+            <!--<ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Default">
+
+                    <SolidColorBrush x:Key="ListViewItemSelectedBackgroundThemeBrush" Color="#01aaad"></SolidColorBrush>                    
+                    <SolidColorBrush x:Key="ListViewItemPointerOverBackgroundThemeBrush" Color="#CCC"></SolidColorBrush>
+                    <SolidColorBrush x:Key="ListViewItemSelectedPointerOverBackgroundThemeBrush" Color="#f2e7c9"></SolidColorBrush>
+                    <SolidColorBrush x:Key="ListViewItemSelectedPointerOverBorderThemeBrush" Color="Black" Opacity="0"></SolidColorBrush>
+
+
+                </ResourceDictionary>
+
+
+            </ResourceDictionary.ThemeDictionaries>-->
+            
         </ResourceDictionary>
+        
     </Application.Resources>
 </Application>

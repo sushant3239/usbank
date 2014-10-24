@@ -65,26 +65,35 @@
                 <StackPanel Margin="30,0,5,0">
                     <TextBlock Text="Teller" Margin="0 0 0 30"
                                Style="{StaticResource SectionHeaderStyle}"/>
-                    <GridView SelectedItem="{Binding SelectedUser,Mode=TwoWay}"
-                    ItemsSource="{Binding Users}" x:Name="leadsGridView">
+                    <ListView x:Name="ImageTextLandingNarrowGrid" Width="230" 
+          VerticalAlignment="Stretch" HorizontalAlignment="Left"  SelectedItem="{Binding SelectedUser,Mode=TwoWay}"
+          CanReorderItems="True" CanDragItems="True"  ItemsSource="{Binding Users}" 
+          ItemTemplate="{StaticResource ImageTextLandingNarrowTemplate}"
+                              ItemContainerStyle="{StaticResource CustomizedListViewItemPresenterTemplate}">
                         <triggers:Interactions.Triggers>
                             <triggers:EventTrigger EventName="SelectionChanged">
                                 <triggers:InvokeCommandAction Command="{Binding GetLeadsCommand}"/>
                             </triggers:EventTrigger>
-                        </triggers:Interactions.Triggers>
-                        <GridView.ItemTemplate>
-                            <DataTemplate>
-                                <controls:UserDetails UserImage="{Binding userImage}" Width="175"
-                                    FirstName="{Binding username,Converter={StaticResource NameToLineBreakConverter}}"/>
-                            </DataTemplate>
-                        </GridView.ItemTemplate>
-                    </GridView>
+                        </triggers:Interactions.Triggers>                        
+                    </ListView>                  
                 </StackPanel>
                 <StackPanel Margin="0 0 60 0" Grid.Column="1"
                     Visibility="{Binding Leads,Converter={StaticResource NullToVisibilityConverter}}">
                     <TextBlock Text="Leads" Margin="0 0 0 30"
                                Style="{StaticResource SectionHeaderStyle}"/>
-                    <GridView ItemsSource="{Binding Leads}"                          
+                    <ListView x:Name="TextLandingNarrowGrid" Width="325" 
+          VerticalAlignment="Stretch" HorizontalAlignment="Left"  SelectedItem="{Binding SelectedLead,Mode=TwoWay}"
+          CanReorderItems="True" CanDragItems="True"  ItemsSource="{Binding Leads}" 
+          ItemTemplate="{StaticResource TextLandingNarrowTemplate}"
+                              ItemContainerStyle="{StaticResource CustomizedListViewItemPresenterTemplate}">
+                        <triggers:Interactions.Triggers>
+                            <triggers:EventTrigger EventName="SelectionChanged">
+                                <triggers:InvokeCommandAction Command="{Binding GetLeadDetailsCommand}"/>
+                            </triggers:EventTrigger>
+                        </triggers:Interactions.Triggers>
+                    </ListView>
+                    
+                    <!--<GridView ItemsSource="{Binding Leads}"                          
                           SelectedItem="{Binding SelectedLead,Mode=TwoWay}">
                         <triggers:Interactions.Triggers>
                             <triggers:EventTrigger EventName="SelectionChanged">
@@ -101,7 +110,7 @@
                                 </StackPanel>
                             </DataTemplate>
                         </GridView.ItemTemplate>
-                    </GridView>
+                    </GridView>-->
                 </StackPanel>
                 <StackPanel 
                     Visibility="{Binding LeadDetails,Converter={StaticResource NullToVisibilityConverter}}"
