@@ -14,6 +14,7 @@
             <Infrastructure:BackNavigationHelper x:Key="BackNavigationHelper"/>
             <Convertes:NullToVisibilityConverter x:Key="NullToVisibilityConverter"/>
             <Convertes:NameToLineBreakConverter x:Key="NameToLineBreakConverter"/>
+            <Convertes:DateFormatConverter x:Key="DateFormatConverter"/>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

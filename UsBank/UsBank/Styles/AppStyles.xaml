@@ -13,7 +13,7 @@
     <SolidColorBrush x:Key="UserHeaderTitleBrush" Color="#BD978D"/>
     
     <Style TargetType="TextBlock" x:Key="MenuItemStyle">
-        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="FontSize" Value="16"/>
         <Setter Property="Margin" Value="15"/>
         <Setter Property="Foreground" Value="{StaticResource MenuItemFontBrush}"/>
     </Style>

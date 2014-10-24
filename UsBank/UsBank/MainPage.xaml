@@ -13,7 +13,7 @@
 
     <Grid>
     	<Grid.Background>
-    		<ImageBrush ImageSource="ms-appx:/Assets/WorldMap_BG.png"/>			
+    		<ImageBrush ImageSource="Assets/WorldMap_BG.png" Stretch="None"/>			
     	</Grid.Background>
         <Grid.ChildrenTransitions>
             <TransitionCollection>
@@ -25,7 +25,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition x:Name="primaryColumn" Width="550"/>
+            <ColumnDefinition x:Name="primaryColumn" Width="720"/>
             <ColumnDefinition x:Name="secondaryColumn" Width="*"/>
         </Grid.ColumnDefinitions>
         <StackPanel Margin="0" Orientation="Vertical" Background="{StaticResource MainBackgroundBrush}" Opacity="0.935" Height="768">
