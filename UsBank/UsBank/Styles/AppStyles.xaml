@@ -21,7 +21,7 @@
             <Border Height="75" Width="75" Margin="0,0,0,0">
                 <Image Height="70" Width="70" Source="{Binding userImage}" />
             </Border>
-            <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="0,10,0,0">                
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="0,10,0,0">
                 <TextBlock Text="{Binding username,Converter={StaticResource NameToLineBreakConverter}}"
                        Margin="10,0,0,0" Width="180" Height="42" 
                        HorizontalAlignment="Left" TextTrimming="WordEllipsis" TextWrapping="Wrap"/>
@@ -36,7 +36,7 @@
                 <ControlTemplate TargetType="ListViewItem">
                     <ListViewItemPresenter SelectionCheckMarkVisualEnabled="False" 
                                            SelectedBackground="{StaticResource ContentBackgroundBrush}" 
-                                           SelectedForeground="{StaticResource MainBackgroundBrush}"
+                                           SelectedForeground="{StaticResource MainBackgroundBrush}"                                           
                                            />
                 </ControlTemplate>
             </Setter.Value>
@@ -44,13 +44,16 @@
     </Style>
 
     <DataTemplate x:Key="TextLandingNarrowTemplate">
-        <StackPanel Orientation="Horizontal" Width="325">
+        <StackPanel Orientation="Horizontal" Width="380">
+
+            <TextBlock FontFamily="Segoe UI Symbol" Text="&#x276F;" Margin="0,0,0,0" Width="20" 
+                       TextAlignment="Left" VerticalAlignment="Center" />
             <TextBlock Margin="10"
-                                    Text="{Binding LeadName}" TextTrimming="WordEllipsis" TextAlignment="Left" Width="150" />
+                                    Text="{Binding LeadName}" TextTrimming="WordEllipsis" TextAlignment="Left" Width="170" />
             <TextBlock Margin="10" 
-                                    Text="{Binding ProductName}" TextTrimming="WordEllipsis" TextAlignment="Left" Width="150" />
+                                    Text="{Binding ProductName}" TextTrimming="WordEllipsis" TextAlignment="Left" Width="170" />
         </StackPanel>
-    </DataTemplate> 
+    </DataTemplate>
 
 
     <Style TargetType="TextBlock" x:Key="MenuItemStyle">
@@ -58,10 +61,10 @@
         <Setter Property="Margin" Value="15"/>
         <Setter Property="Foreground" Value="{StaticResource MenuItemFontBrush}"/>
     </Style>
-    
+
     <Style TargetType="TextBlock" x:Key="TextFieldStyle">
         <Setter Property="Foreground" Value="#6a6a6a"/>
-        <Setter Property="FontSize" Value="15" />        
+        <Setter Property="FontSize" Value="15" />
     </Style>
 
     <Style TargetType="TextBlock" x:Key="MainHeaderStylePressed">
@@ -82,19 +85,19 @@
     </Style>
 
     <Style TargetType="TextBlock" x:Key="FAQStyle">
-        <Setter Property="FontSize" Value="18"/>        
+        <Setter Property="FontSize" Value="18"/>
         <Setter Property="Foreground" Value="{StaticResource InfoTextBrush}"/>
         <Setter Property="TextWrapping" Value="Wrap"/>
     </Style>
-    
+
     <Style TargetType="TextBlock" x:Key="FAQAnswerStyle">
         <Setter Property="FontSize" Value="15"/>
         <Setter Property="Foreground" Value="{StaticResource InfoTextBrush}"/>
         <Setter Property="TextWrapping" Value="Wrap"/>
     </Style>
-    
+
     <Style TargetType="TextBlock" x:Name="PageHeaderStyle">
         <Setter Property="FontSize" Value="35"/>
     </Style>
-    
+
 </ResourceDictionary>
