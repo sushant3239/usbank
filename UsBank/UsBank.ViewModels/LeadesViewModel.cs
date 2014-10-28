@@ -33,6 +33,7 @@ namespace UsBank.ViewModels
             GetLeadsCommand = new DelegateCommand(GetLeads);
             LoadCommand = new DelegateCommand(LoadData);
             GetLeadDetailsCommand = new DelegateCommand(GetLeadDetails);
+            StubbedDataService.CurrentInstance.IsMockup = accountManager.CurrentUser.IsMockup;
         }
 
         public ICommand GetLeadsCommand { get; private set; }
@@ -170,7 +171,8 @@ namespace UsBank.ViewModels
             LeadDetails = null;
             if (SelectedLead != null)
             {
-                LeadDetails = await _service.GetLeadDetailsInfo(SelectedLead.LeadName);
+                //LeadDetails = await _service.GetLeadDetailsInfo(SelectedLead.LeadName);
+                LeadDetails = await StubbedDataService.CurrentInstance.GetLeadDetailsInfo(SelectedLead.LeadName);
             }
         }
 
@@ -178,12 +180,14 @@ namespace UsBank.ViewModels
         {
 
             Leads = null;
-            Leads = await _service.GetLeadData(SelectedUser.username);
+            //Leads = await _service.GetLeadData(SelectedUser.username);
+            Leads = await StubbedDataService.CurrentInstance.GetLeadData(SelectedUser.username);
         }
 
         private async void GetUsers()
         {
-            Users = await _service.GetUserData(_accountManager.CurrentUser.UserId);
+            //Users = await _service.GetUserData(_accountManager.CurrentUser.UserId);         
+            Users = await StubbedDataService.CurrentInstance.GetUserData(_accountManager.CurrentUser.UserId);
         }
     }
 

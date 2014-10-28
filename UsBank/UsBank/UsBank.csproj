@@ -152,8 +152,16 @@
     <None Include="UsBank_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\1116X540.png" />
+    <Content Include="Assets\150X150.png" />
+    <Content Include="Assets\310X150.scale-100.png" />
+    <Content Include="Assets\310X310.scale-100.png" />
+    <Content Include="Assets\620X300.png" />
+    <Content Include="Assets\70X70.scale-100.png" />
+    <Content Include="Assets\868X420.png" />
     <Content Include="Assets\Back_Arrow_White.png" />
     <Content Include="Assets\BG_Image_LoginScreen.png" />
+    <Content Include="Assets\BG_Large_Image.png" />
     <Content Include="Assets\Customers_Active_Icon.png" />
     <Content Include="Assets\Customers_Inactive_Icon.png" />
     <Content Include="Assets\LightGray.png" />
@@ -168,7 +176,10 @@
     <Content Include="Assets\ProfilePic.png" />
     <Content Include="Assets\SmallLogo.scale-100.png" />
     <Content Include="Assets\SplashScreen.scale-100.png" />
+    <Content Include="Assets\SplashScreen.scale-140.png" />
+    <Content Include="Assets\SplashScreen.scale-180.png" />
     <Content Include="Assets\StoreLogo.scale-100.png" />
+    <Content Include="Assets\StoreLogo.scale-140.png" />
     <Content Include="Assets\USB_Logo.png" />
     <Content Include="Assets\WorldMap_BG.png" />
     <Content Include="Common\ReadMe.txt" />

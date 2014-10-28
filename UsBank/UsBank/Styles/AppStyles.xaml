@@ -23,8 +23,8 @@
             </Border>
             <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="0,10,0,0">
                 <TextBlock Text="{Binding username,Converter={StaticResource NameToLineBreakConverter}}"
-                       Margin="10,0,0,0" Width="180" Height="42" 
-                       HorizontalAlignment="Left" TextTrimming="WordEllipsis" TextWrapping="Wrap"/>
+                       Margin="10,0,0,0" FontSize="20"
+                       HorizontalAlignment="Left" TextTrimming="WordEllipsis" TextWrapping="Wrap" FontFamily="Segoe UI Semibold"/>
             </StackPanel>
         </StackPanel>
     </DataTemplate>
@@ -44,14 +44,15 @@
     </Style>
 
     <DataTemplate x:Key="TextLandingNarrowTemplate">
-        <StackPanel Orientation="Horizontal" Width="380">
+        <StackPanel Orientation="Vertical" Width="380">
+        <StackPanel Orientation="Horizontal" Width="380" Margin="0,5,0,0">
 
             <TextBlock FontFamily="Segoe UI Symbol" Text="&#x276F;" Margin="0,0,0,0" Width="20" 
-                       TextAlignment="Left" VerticalAlignment="Center" />
-            <TextBlock Margin="10"
-                                    Text="{Binding LeadName}" TextTrimming="WordEllipsis" TextAlignment="Left" Width="170" />
-            <TextBlock Margin="10" 
-                                    Text="{Binding ProductName}" TextTrimming="WordEllipsis" TextAlignment="Left" Width="170" />
+                       TextAlignment="Left" VerticalAlignment="Top" />
+                <TextBlock FontWeight="Normal"  Margin="2,0,0,0" Text="{Binding LeadName}" TextTrimming="WordEllipsis" TextAlignment="Left" Width="100" TextWrapping="Wrap" MaxHeight="50" />
+            <TextBlock FontWeight="Normal" Margin="5,0,0,0" Text="{Binding ProductName}" TextTrimming="WordEllipsis" TextWrapping="Wrap" TextAlignment="Left" Width="170" MaxHeight="50" />
+        </StackPanel>
+            <Line Stroke="Gray" StrokeDashArray="2 2" StrokeThickness="1" X2="250" Margin="0,5,0,0"/>
         </StackPanel>
     </DataTemplate>
 
@@ -61,10 +62,10 @@
         <Setter Property="Margin" Value="15"/>
         <Setter Property="Foreground" Value="{StaticResource MenuItemFontBrush}"/>
     </Style>
-
+    
     <Style TargetType="TextBlock" x:Key="TextFieldStyle">
         <Setter Property="Foreground" Value="#6a6a6a"/>
-        <Setter Property="FontSize" Value="15" />
+        <Setter Property="FontSize" Value="15" />        
     </Style>
 
     <Style TargetType="TextBlock" x:Key="MainHeaderStylePressed">
@@ -85,19 +86,120 @@
     </Style>
 
     <Style TargetType="TextBlock" x:Key="FAQStyle">
-        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontSize" Value="18"/>        
         <Setter Property="Foreground" Value="{StaticResource InfoTextBrush}"/>
         <Setter Property="TextWrapping" Value="Wrap"/>
     </Style>
-
+    
     <Style TargetType="TextBlock" x:Key="FAQAnswerStyle">
         <Setter Property="FontSize" Value="15"/>
         <Setter Property="Foreground" Value="{StaticResource InfoTextBrush}"/>
         <Setter Property="TextWrapping" Value="Wrap"/>
     </Style>
-
+    
     <Style TargetType="TextBlock" x:Name="PageHeaderStyle">
         <Setter Property="FontSize" Value="35"/>
     </Style>
 
+    <Style TargetType="TextBox" x:Key="LeadDetailTextBox">
+        <Setter Property="Foreground" Value="#959595"/>        
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="IsReadOnly" Value="True"/>
+    </Style>
+
+    <Style x:Key="MainImageTileButton" TargetType="Button">
+        <Setter Property="Background" Value="{ThemeResource ButtonBackgroundThemeBrush}"/>
+        <Setter Property="Foreground" Value="{ThemeResource ButtonForegroundThemeBrush}"/>      
+        <Setter Property="Padding" Value="12,4,12,4"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="FontSize" Value="{ThemeResource ControlContentThemeFontSize}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">                    
+                        <Grid Background="#137677" Height="130" Width="130" Tapped="StackPanelTapped">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock x:Name="TileText" HorizontalAlignment="Center"            
+            FontSize="16"
+            Margin="0 5 0 10"
+            VerticalAlignment="Center"
+            Text="{Binding ElementName=RootHubTile, Path=HeaderText}" Foreground="#0a5051"/>
+                            <Image x:Name="TileImage" Stretch="None"
+            Grid.Row="1"
+            VerticalAlignment="Top"
+            Source="{Binding ElementName=RootHubTile, Path=ActiveTileImage}"/>                    
+                    
+                    <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal"/>
+                                <VisualState x:Name="PointerOver">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="ContentPresenter">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="#f2e7c9"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <!--<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentPresenter">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonPointerOverForegroundThemeBrush}"/>
+                                        </ObjectAnimationUsingKeyFrames>-->
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="TileText">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="#00000"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Source" Storyboard.TargetName="TileImage">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{Binding ElementName=RootHubTile, Path=InActiveTileImage}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="ContentPresenter">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="#f2e7c9"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <!--<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentPresenter">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonPressedForegroundThemeBrush}"/>
+                                        </ObjectAnimationUsingKeyFrames>-->
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="TileText">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="#01aaad"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Disabled">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="Border">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonDisabledBackgroundThemeBrush}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="Border">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonDisabledBorderThemeBrush}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentPresenter">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonDisabledForegroundThemeBrush}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="FocusStates">
+                                <VisualState x:Name="Focused">
+                                    <Storyboard>
+                                        <!--<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="FocusVisualWhite"/>
+                                        <DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="FocusVisualBlack"/>-->
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Unfocused"/>
+                                <VisualState x:Name="PointerFocused"/>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <!--<Border x:Name="Border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0" Background="{TemplateBinding Background}" Margin="3">
+                            <ContentPresenter x:Name="ContentPresenter" AutomationProperties.AccessibilityView="Raw" ContentTemplate="{TemplateBinding ContentTemplate}" ContentTransitions="{TemplateBinding ContentTransitions}" Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <Rectangle x:Name="FocusVisualWhite" IsHitTestVisible="False" Opacity="0" StrokeDashOffset="1.5" StrokeEndLineCap="Square" Stroke="{ThemeResource FocusVisualWhiteStrokeThemeBrush}" StrokeDashArray="1,1"/>
+                        <Rectangle x:Name="FocusVisualBlack" IsHitTestVisible="False" Opacity="0" StrokeDashOffset="0.5" StrokeEndLineCap="Square" Stroke="{ThemeResource FocusVisualBlackStrokeThemeBrush}" StrokeDashArray="1,1"/>-->
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
 </ResourceDictionary>

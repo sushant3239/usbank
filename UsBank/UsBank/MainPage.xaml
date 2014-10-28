@@ -12,123 +12,127 @@
             Path=MainPageViewModel}">
 
     <Grid>
-    	<Grid.Background>
-    		<ImageBrush ImageSource="Assets/WorldMap_BG.png" Stretch="None"/>			
-    	</Grid.Background>
-        <Grid.ChildrenTransitions>
-            <TransitionCollection>
-                <EntranceThemeTransition/>
-            </TransitionCollection>
-        </Grid.ChildrenTransitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition x:Name="primaryColumn" Width="720"/>
-            <ColumnDefinition x:Name="secondaryColumn" Width="*"/>
-        </Grid.ColumnDefinitions>
-        <StackPanel Margin="0" Orientation="Vertical" Background="{StaticResource MainBackgroundBrush}" Opacity="0.935" Height="768">
-        	<StackPanel Orientation="Vertical" Margin="83,59,0,0">
-        		<TextBlock Text="US BANK"
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+            <Grid>
+                <Grid.Background>
+                    <ImageBrush ImageSource="ms-appx:/Assets/WorldMap_BG.png"/>
+                </Grid.Background>
+                <Grid.ChildrenTransitions>
+                    <TransitionCollection>
+                        <EntranceThemeTransition/>
+                    </TransitionCollection>
+                </Grid.ChildrenTransitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition x:Name="primaryColumn" Width="550"/>
+                    <ColumnDefinition x:Name="secondaryColumn" Width="*"/>
+                </Grid.ColumnDefinitions>
+                <ProgressBar IsIndeterminate="True" VerticalAlignment="Top" Grid.ColumnSpan="1"/>
+                <StackPanel Margin="0" Orientation="Vertical" Background="{StaticResource MainBackgroundBrush}" Opacity="0.935" Height="768">
+                    <StackPanel Orientation="Vertical" Margin="83,59,0,0">
+                        <TextBlock Text="US BANK"
         			VerticalAlignment="Bottom"
         			Style="{StaticResource MainHeaderStylePressed}"/>
-				
-        	</StackPanel>
-        	<StackPanel Margin="0" Orientation="Horizontal">
-        		<StackPanel Margin="0" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
-        			<Button Margin="20,0,0,0"
+
+                    </StackPanel>
+                    <StackPanel Margin="0" Orientation="Horizontal">
+                        <StackPanel Margin="0" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
+                            <Button Margin="20,0,0,0"
         				HorizontalAlignment="Left"
         				Command="{Binding GoBackCommand, Source={StaticResource BackNavigationHelper}}"
         				VerticalAlignment="Stretch"
         				Style="{StaticResource NavigationBackButtonNormalStyle}"/>
-        		</StackPanel>
-        		<StackPanel  Margin="20,0,0,0"
-        			Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left" Orientation="Vertical">			  
-        			<StackPanel x:Name="TitleGrid">
-        				<TextBlock Text="Bankers Desktop"
+                        </StackPanel>
+                        <StackPanel  Margin="20,0,0,0"
+        			Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left" Orientation="Vertical">
+                            <StackPanel x:Name="TitleGrid">
+                                <TextBlock Text="Bankers Desktop"
         					VerticalAlignment="Bottom"
         					Style="{StaticResource PageHeaderStyle}"/>
-        			</StackPanel>
-        			<StackPanel>
-        				<TextBlock 
+                            </StackPanel>
+                            <StackPanel>
+                                <TextBlock 
         					FontSize="15"
         					Margin="0 20 0 15"
         					Foreground="#d4d4d4"
         					Text="select on of the option to view details"/>
-        				<Grid>
-        					<Grid.RowDefinitions>
-        						<RowDefinition Height="Auto"/>
-        						<RowDefinition Height="10"/>
-        						<RowDefinition Height="Auto"/>
-        					</Grid.RowDefinitions>
-        					<Grid.ColumnDefinitions>
-        						<ColumnDefinition Width="Auto"/>
-        						<ColumnDefinition Width="10"/>
-        						<ColumnDefinition Width="Auto"/>
-        					</Grid.ColumnDefinitions>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="10"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="10"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
 
-        					<controls:HubTile HeaderText="My Activities"
+                                    <controls:HubTile HeaderText="My Activities"
         						ActiveTileImage="/Assets/MyActivity_Active_Icon.png"
         						InActiveTileImage="/Assets/MyActivity_Inactive_Icon.png"/>
-                    
-        					<controls:HubTile HeaderText="Customers" 
+
+                                    <controls:HubTile HeaderText="Customers" 
         						Grid.Row="0" Grid.Column="2"                                                               
         						ActiveTileImage="/Assets/Customers_Active_Icon.png"
         						InActiveTileImage="/Assets/Customers_Inactive_Icon.png">
-        						<triggers:Interactions.Triggers>
-        							<triggers:EventTrigger EventName="Tapped">
-        								<triggers:InvokeCommandAction Command="{Binding NavigateToCustomersCommand}"/>
-        							</triggers:EventTrigger>
-        						</triggers:Interactions.Triggers>
-        					</controls:HubTile>
+                                        <triggers:Interactions.Triggers>
+                                            <triggers:EventTrigger EventName="Tapped">
+                                                <triggers:InvokeCommandAction Command="{Binding NavigateToCustomersCommand}"/>
+                                            </triggers:EventTrigger>
+                                        </triggers:Interactions.Triggers>
+                                    </controls:HubTile>
 
-        					<controls:HubTile HeaderText="Operations" 
+                                    <controls:HubTile HeaderText="Operations" 
         						Grid.Row="2" Grid.Column="0"
         						ActiveTileImage="/Assets/Operations_Active_Icon.png"
         						InActiveTileImage="/Assets/Operations_Inactive_Icon.png"/>
-                    
-        				</Grid>
-        			</StackPanel>
-        		</StackPanel>
-        	</StackPanel>
-        </StackPanel>
-        <Grid Grid.Column="1" Grid.RowSpan="2"
-        	Background="{StaticResource ContentBackgroundBrush}">      
-        	<Grid.RowDefinitions>
-        		<RowDefinition Height="Auto"/>
-        		<RowDefinition Height="*"/>
-        	</Grid.RowDefinitions>
-        	<controls:HeaderControl />
-        	<Hub Grid.Row="1" HorizontalAlignment="Left">
-        		<Hub.Header>
-        			<StackPanel>
-        				<TextBlock Text="Announcement" 
-        					Margin="0 0 0 40"                                   
-        					Style="{StaticResource SectionHeaderStyle}"/> 
-        			</StackPanel>
-        		</Hub.Header>
-        		<HubSection Width="500">
-        			<DataTemplate>
-        				<StackPanel>
-        					<TextBlock Style="{StaticResource FAQStyle}" Margin="0 0 0 20" Text="U.S. Bank Travel Virtual Pay"/>
-        					<TextBlock Style="{StaticResource FAQAnswerStyle}" Margin="0 0 0 30" Text="Well, here it is: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum, ullam, ducimus, eaque, ex autem est dolore illo similique quasi unde sint rerum magnam quod amet iste dolorem ad laudantium molestias enim quibusdam inventore totam fugit eum iusto ratione alias deleniti suscipit modi quis nostrum veniam fugiat debitis officiis impedit ipsum natus ipsa. Doloremque, id, at, corporis, libero laborum architecto mollitia molestiae maxime aut deserunt sed perspiciatis quibusdam praesentium consectetur in sint impedit voluptates! Deleniti, sequi voluptate recusandae facere nostrum?"/>
 
-        					<TextBlock Style="{StaticResource FAQStyle}" Margin="0 0 0 20" Text="Real Time Credit Limit Change Capability"/>
-        					<TextBlock Style="{StaticResource FAQAnswerStyle}" Text="Well, here it is: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum, ullam, ducimus, eaque, ex autem est dolore illo similique quasi unde sint rerum magnam quod amet iste dolorem ad laudantium molestias enim quibusdam inventore totam fugit eum iusto ratione alias deleniti suscipit modi quis nostrum veniam fugiat debitis officiis impedit ipsum natus ipsa. Doloremque, id, at, corporis, libero laborum architecto mollitia molestiae maxime aut deserunt sed perspiciatis quibusdam praesentium consectetur in sint impedit voluptates! Deleniti, sequi voluptate recusandae facere nostrum?"/>
-        				</StackPanel>
-        			</DataTemplate>
-        		</HubSection>
-        		<HubSection Width="500">
-        			<DataTemplate>
-        				<StackPanel>
-        					<TextBlock Style="{StaticResource FAQStyle}" Margin="0 0 0 20" Text="U.S. Bank Payment"/>
-        					<TextBlock Style="{StaticResource FAQAnswerStyle}" Margin="0 0 0 30" Text="Well, here it is: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum, ullam, ducimus, eaque, ex autem est dolore illo similique quasi unde sint rerum magnam quod amet iste dolorem ad laudantium molestias enim quibusdam inventore totam fugit eum iusto ratione alias deleniti suscipit modi quis nostrum veniam fugiat debitis officiis impedit ipsum natus ipsa. Doloremque, id, at, corporis, libero laborum architecto mollitia molestiae maxime aut deserunt sed perspiciatis quibusdam praesentium consectetur in sint impedit voluptates! Deleniti, sequi voluptate recusandae facere nostrum?"/>
-        				</StackPanel>
-        			</DataTemplate>
-        		</HubSection>
-        	</Hub>
-        </Grid>
-        
+                                </Grid>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+                <Grid Grid.Column="1" Grid.RowSpan="2"
+        	Background="{StaticResource ContentBackgroundBrush}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <controls:HeaderControl />
+                    <Hub Grid.Row="1" HorizontalAlignment="Left">
+                        <Hub.Header>
+                            <StackPanel>
+                                <TextBlock Text="Announcement" 
+        					Margin="0 0 0 40"                                   
+        					Style="{StaticResource SectionHeaderStyle}"/>
+                            </StackPanel>
+                        </Hub.Header>
+                        <HubSection Width="500">
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock Style="{StaticResource FAQStyle}" Margin="0 0 0 20" Text="U.S. Bank Travel Virtual Pay"/>
+                                    <TextBlock Style="{StaticResource FAQAnswerStyle}" Margin="0 0 0 30" Text="Well, here it is: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum, ullam, ducimus, eaque, ex autem est dolore illo similique quasi unde sint rerum magnam quod amet iste dolorem ad laudantium molestias enim quibusdam inventore totam fugit eum iusto ratione alias deleniti suscipit modi quis nostrum veniam fugiat debitis officiis impedit ipsum natus ipsa. Doloremque, id, at, corporis, libero laborum architecto mollitia molestiae maxime aut deserunt sed perspiciatis quibusdam praesentium consectetur in sint impedit voluptates! Deleniti, sequi voluptate recusandae facere nostrum?"/>
+
+                                    <TextBlock Style="{StaticResource FAQStyle}" Margin="0 0 0 20" Text="Real Time Credit Limit Change Capability"/>
+                                    <TextBlock Style="{StaticResource FAQAnswerStyle}" Text="Well, here it is: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum, ullam, ducimus, eaque, ex autem est dolore illo similique quasi unde sint rerum magnam quod amet iste dolorem ad laudantium molestias enim quibusdam inventore totam fugit eum iusto ratione alias deleniti suscipit modi quis nostrum veniam fugiat debitis officiis impedit ipsum natus ipsa. Doloremque, id, at, corporis, libero laborum architecto mollitia molestiae maxime aut deserunt sed perspiciatis quibusdam praesentium consectetur in sint impedit voluptates! Deleniti, sequi voluptate recusandae facere nostrum?"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </HubSection>
+                        <HubSection Width="500">
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock Style="{StaticResource FAQStyle}" Margin="0 0 0 20" Text="U.S. Bank Payment"/>
+                                    <TextBlock Style="{StaticResource FAQAnswerStyle}" Margin="0 0 0 30" Text="Well, here it is: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum, ullam, ducimus, eaque, ex autem est dolore illo similique quasi unde sint rerum magnam quod amet iste dolorem ad laudantium molestias enim quibusdam inventore totam fugit eum iusto ratione alias deleniti suscipit modi quis nostrum veniam fugiat debitis officiis impedit ipsum natus ipsa. Doloremque, id, at, corporis, libero laborum architecto mollitia molestiae maxime aut deserunt sed perspiciatis quibusdam praesentium consectetur in sint impedit voluptates! Deleniti, sequi voluptate recusandae facere nostrum?"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </HubSection>
+                    </Hub>
+                </Grid>
+            </Grid>
+        </ScrollViewer>
     </Grid>
 </Page>

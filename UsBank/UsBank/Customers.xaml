@@ -10,90 +10,93 @@
     mc:Ignorable="d">
 
     <Grid>
-        <Grid.Background>
-            <ImageBrush ImageSource="Assets/WorldMap_BG.png" Stretch="None"/>
-        </Grid.Background>
-        <Grid.ChildrenTransitions>
-            <TransitionCollection>
-                <EntranceThemeTransition/>
-            </TransitionCollection>
-        </Grid.ChildrenTransitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition x:Name="primaryColumn" Width="420"/>
-            <ColumnDefinition x:Name="secondaryColumn" Width="*"/>
-        </Grid.ColumnDefinitions>
-        <StackPanel Background="{StaticResource MainBackgroundBrush}" Opacity="0.935" Grid.Row="1">
-            <Grid x:Name="TitleGrid">
+        <ProgressBar IsIndeterminate="True" VerticalAlignment="Top" Grid.ColumnSpan="1"/>
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">            
+            <Grid>
+                <Grid.Background>
+                    <ImageBrush ImageSource="Assets/WorldMap_BG.png" Stretch="None"/>
+                </Grid.Background>
+                <Grid.ChildrenTransitions>
+                    <TransitionCollection>
+                        <EntranceThemeTransition/>
+                    </TransitionCollection>
+                </Grid.ChildrenTransitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="90"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition x:Name="primaryColumn" Width="420"/>
+                    <ColumnDefinition x:Name="secondaryColumn" Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Button Margin="20,59,0,0"
+                <StackPanel Background="{StaticResource MainBackgroundBrush}" Opacity="0.935" Grid.Row="1">
+                    <Grid x:Name="TitleGrid">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="90"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Margin="20,59,0,0"
                         HorizontalAlignment="Left"
                         Command="{Binding Source={StaticResource BackNavigationHelper},Path=GoBackCommand}"
                     VerticalAlignment="Stretch"
                     Style="{StaticResource NavigationBackButtonNormalStyle}"/>
-                <TextBlock Text="Customers" Foreground="{StaticResource Highlight}"
+                        <TextBlock Text="Customers" Foreground="{StaticResource Highlight}"
                     Style="{StaticResource PageHeaderStyle}"
                     Grid.Column="1" VerticalAlignment="Bottom"/>
-            </Grid>
-            <StackPanel Margin="80 40" Grid.Row="1">
-                <TextBlock Text="> Leads" Style="{StaticResource MenuItemStyle}" Foreground="{StaticResource Highlight}"/>
-                <TextBlock Text="> Accounts" Style="{StaticResource MenuItemStyle}"/>
-                <TextBlock Text="> Contacts" Style="{StaticResource MenuItemStyle}"/>
-            </StackPanel>
-        </StackPanel>
-        <Grid Grid.Column="1" Grid.RowSpan="2" Background="{StaticResource ContentBackgroundBrush}">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <controls:HeaderControl />
-            <Grid Grid.Row="1"
+                    </Grid>
+                    <StackPanel Margin="80 40" Grid.Row="1">
+                        <TextBlock Text="> Leads" Style="{StaticResource MenuItemStyle}" Foreground="{StaticResource Highlight}"/>
+                        <TextBlock Text="> Accounts" Style="{StaticResource MenuItemStyle}"/>
+                        <TextBlock Text="> Contacts" Style="{StaticResource MenuItemStyle}"/>
+                    </StackPanel>
+                </StackPanel>
+                <Grid Grid.Column="1" Grid.RowSpan="2" Background="{StaticResource ContentBackgroundBrush}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <controls:HeaderControl />
+                    <Grid Grid.Row="1"
                 x:Name="RightPanel"
                 Margin="0 40 0 0"
                 DataContext="{Binding Source={StaticResource ViewModelLocator},Path=LeadsViewModel}">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="250"/>
-                    <ColumnDefinition Width="400"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
-                <StackPanel Margin="30,0,5,0">
-                    <TextBlock Text="Teller" Margin="0 0 0 30"
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="250"/>
+                            <ColumnDefinition Width="400"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Margin="30,0,5,0">
+                            <TextBlock Text="Teller" Margin="0 0 0 30"
                                Style="{StaticResource SectionHeaderStyle}"/>
-                    <ListView x:Name="ImageTextLandingNarrowGrid" Width="230" 
+                            <ListView x:Name="ImageTextLandingNarrowGrid" Width="230" 
           VerticalAlignment="Stretch" HorizontalAlignment="Left"  SelectedItem="{Binding SelectedUser,Mode=TwoWay}"
           CanReorderItems="True" CanDragItems="True"  ItemsSource="{Binding Users}" 
           ItemTemplate="{StaticResource ImageTextLandingNarrowTemplate}"
                               ItemContainerStyle="{StaticResource CustomizedListViewItemPresenterTemplate}">
-                        <triggers:Interactions.Triggers>
-                            <triggers:EventTrigger EventName="SelectionChanged">
-                                <triggers:InvokeCommandAction Command="{Binding GetLeadsCommand}"/>
-                            </triggers:EventTrigger>
-                        </triggers:Interactions.Triggers>                        
-                    </ListView>                  
-                </StackPanel>
-                <StackPanel Margin="0 0 60 0" Grid.Column="1"
+                                <triggers:Interactions.Triggers>
+                                    <triggers:EventTrigger EventName="SelectionChanged">
+                                        <triggers:InvokeCommandAction Command="{Binding GetLeadsCommand}"/>
+                                    </triggers:EventTrigger>
+                                </triggers:Interactions.Triggers>
+                            </ListView>
+                        </StackPanel>
+                        <StackPanel Margin="0 0 60 0" Grid.Column="1"
                     Visibility="{Binding Leads,Converter={StaticResource NullToVisibilityConverter}}">
-                    <TextBlock Text="Leads" Margin="0 0 0 30"
+                            <TextBlock Text="Leads" Margin="0 0 0 30"
                                Style="{StaticResource SectionHeaderStyle}"/>
-                    <ListView x:Name="TextLandingNarrowGrid" Width="325" 
+                            <ListView x:Name="TextLandingNarrowGrid" Width="325" 
           VerticalAlignment="Stretch" HorizontalAlignment="Left"  SelectedItem="{Binding SelectedLead,Mode=TwoWay}"
           CanReorderItems="True" CanDragItems="True"  ItemsSource="{Binding Leads}" 
           ItemTemplate="{StaticResource TextLandingNarrowTemplate}"
                               ItemContainerStyle="{StaticResource CustomizedListViewItemPresenterTemplate}">
-                        <triggers:Interactions.Triggers>
-                            <triggers:EventTrigger EventName="SelectionChanged">
-                                <triggers:InvokeCommandAction Command="{Binding GetLeadDetailsCommand}"/>
-                            </triggers:EventTrigger>
-                        </triggers:Interactions.Triggers>
-                    </ListView>
-                    
-                    <!--<GridView ItemsSource="{Binding Leads}"                          
+                                <triggers:Interactions.Triggers>
+                                    <triggers:EventTrigger EventName="SelectionChanged">
+                                        <triggers:InvokeCommandAction Command="{Binding GetLeadDetailsCommand}"/>
+                                    </triggers:EventTrigger>
+                                </triggers:Interactions.Triggers>
+                            </ListView>
+
+                            <!--<GridView ItemsSource="{Binding Leads}"                          
                           SelectedItem="{Binding SelectedLead,Mode=TwoWay}">
                         <triggers:Interactions.Triggers>
                             <triggers:EventTrigger EventName="SelectionChanged">
@@ -111,34 +114,36 @@
                             </DataTemplate>
                         </GridView.ItemTemplate>
                     </GridView>-->
-                </StackPanel>
-                <StackPanel 
+                        </StackPanel>
+                        <StackPanel 
                     Visibility="{Binding LeadDetails,Converter={StaticResource NullToVisibilityConverter}}"
                     Grid.Column="2">
-                    <StackPanel DataContext="{Binding LeadDetails}">
-                        <TextBlock Text="Details" 
+                            <StackPanel DataContext="{Binding LeadDetails}">
+                                <TextBlock Text="Details" 
                         Style="{StaticResource SectionHeaderStyle}" Margin="0 0 0 30"/>
 
-                        <TextBlock Text="LeadId" Style="{StaticResource TextFieldStyle}"/>
-                        <TextBox Margin="0 5 0 25" Text="{Binding leadNumber}"/>
+                                <TextBlock Text="LeadId" Style="{StaticResource TextFieldStyle}"/>
+                                <TextBox Margin="0 5 0 25" Text="{Binding leadNumber}" Style="{StaticResource LeadDetailTextBox}"/>
 
-                        <TextBlock Text="Full Name" Style="{StaticResource TextFieldStyle}"/>
-                        <TextBox Margin="0 5 0 25" Text="{Binding FullName}"/>
+                                <TextBlock Text="Full Name" Style="{StaticResource TextFieldStyle}"/>
+                                <TextBox Margin="0 5 0 25" Text="{Binding FullName}" Style="{StaticResource LeadDetailTextBox}"/>
 
-                        <TextBlock Text="Gender" Style="{StaticResource TextFieldStyle}"/>
-                        <TextBox Margin="0 5 0 25" Text="{Binding Gender}"/>
+                                <TextBlock Text="Gender" Style="{StaticResource TextFieldStyle}"/>
+                                <TextBox Margin="0 5 0 25" Text="{Binding Gender}" Style="{StaticResource LeadDetailTextBox}"/>
 
-                        <TextBlock Text="Date of Birth" Style="{StaticResource TextFieldStyle}"/>
-                        <TextBox Margin="0 5 0 25" Text="{Binding DOB,Converter={StaticResource DateFormatConverter}}"/>
+                                <TextBlock Text="Date of Birth" Style="{StaticResource TextFieldStyle}"/>
+                                <TextBox Margin="0 5 0 25" Text="{Binding DOB,Converter={StaticResource DateFormatConverter}}" Style="{StaticResource LeadDetailTextBox}"/>
 
-                        <TextBlock Text="Product and Services" Style="{StaticResource TextFieldStyle}"/>
-                        <TextBox Margin="0 5 0 25" Text="{Binding Product}"/>
+                                <TextBlock Text="Product and Services" Style="{StaticResource TextFieldStyle}" />
+                                <TextBox Margin="0 5 0 25" Text="{Binding Product}" Style="{StaticResource LeadDetailTextBox}"/>
 
-                        <TextBlock Text="Address" Style="{StaticResource TextFieldStyle}"/>
-                        <TextBox Margin="0 5 0 25" Text="{Binding Address}"/>
-                    </StackPanel>
-                </StackPanel>
+                                <TextBlock Text="Address" Style="{StaticResource TextFieldStyle}"/>
+                                <TextBox Margin="0 5 0 25" Text="{Binding Address}" Style="{StaticResource LeadDetailTextBox}"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
             </Grid>
-        </Grid>
+        </ScrollViewer>
     </Grid>
 </Page>

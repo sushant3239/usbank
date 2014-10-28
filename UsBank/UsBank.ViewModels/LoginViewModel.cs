@@ -53,11 +53,25 @@ namespace UsBank.ViewModels
             }
         }
 
+        private bool _isMockup = false;
+            public bool IsMockup 
+            {
+                get
+                {
+                    return _isMockup;
+                }
+                set
+                {
+                    _isMockup = value;
+                    OnPropertyChanged(() => IsMockup);
+                }
+            }
+
         public DelegateCommand LoginCommand { get; private set; }
 
         private void Login()
         {
-            _accountManager.Setuser(new User { UserId = UserName, UserPassword = UserPassword });
+            _accountManager.Setuser(new User { UserId = UserName, UserPassword = UserPassword ,IsMockup = IsMockup});
             _navigationService.NavigateToMainPage();
         }
 
