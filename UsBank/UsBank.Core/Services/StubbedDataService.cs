@@ -36,7 +36,7 @@ namespace UsBank.Core.Services
         public StubbedDataService()
         {
             BasicHttpBinding basicBinding = new BasicHttpBinding();
-            EndpointAddress serviceEndpoint = new EndpointAddress(CRMServiceURL);
+            EndpointAddress serviceEndpoint = new EndpointAddress(CRMServiceURL);            
             var channelFactory = new ChannelFactory<CRMService.IService1>(basicBinding, serviceEndpoint);
             serviceClient = channelFactory.CreateChannel();
         }
@@ -45,7 +45,7 @@ namespace UsBank.Core.Services
         {
             if (IsMockup)
             {
-                await Task.Delay(2000);
+                await Task.Delay(500);
                 return new List<LeadData>
                 {
                     new LeadData
@@ -87,7 +87,7 @@ namespace UsBank.Core.Services
         {
             if (IsMockup)
             {
-                await Task.Delay(2000);
+                await Task.Delay(500);
                 return new LeadDetails
                 {
                     Address = "HSG Street",

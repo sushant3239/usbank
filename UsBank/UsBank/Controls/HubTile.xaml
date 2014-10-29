@@ -11,7 +11,8 @@
     x:Name="RootHubTile">
 
     <Grid x:Name="RootPanel" Background="#137677" Height="130" Width="130" Tapped="StackPanelTapped">
-        <Grid.RowDefinitions>
+        <Button Style="{StaticResource MainImageTileButton}"/>
+        <!--<Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
@@ -23,6 +24,6 @@
         <Image Stretch="None"
             Grid.Row="1"
             VerticalAlignment="Top"
-            Source="{Binding ElementName=RootHubTile, Path=ActiveTileImage}"/>
+            Source="{Binding ElementName=RootHubTile, Path=ActiveTileImage}"/>-->
     </Grid>
 </UserControl>

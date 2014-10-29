@@ -52,14 +52,15 @@
                 <TextBlock FontWeight="Normal"  Margin="2,0,0,0" Text="{Binding LeadName}" TextTrimming="WordEllipsis" TextAlignment="Left" Width="100" TextWrapping="Wrap" MaxHeight="50" />
             <TextBlock FontWeight="Normal" Margin="5,0,0,0" Text="{Binding ProductName}" TextTrimming="WordEllipsis" TextWrapping="Wrap" TextAlignment="Left" Width="170" MaxHeight="50" />
         </StackPanel>
-            <Line Stroke="Gray" StrokeDashArray="2 2" StrokeThickness="1" X2="250" Margin="0,5,0,0"/>
+            <Line Stroke="Gray" StrokeDashArray="2 2" StrokeThickness="1" X2="270" Margin="0,5,0,0"/>
         </StackPanel>
     </DataTemplate>
 
 
     <Style TargetType="TextBlock" x:Key="MenuItemStyle">
         <Setter Property="FontSize" Value="16"/>
-        <Setter Property="Margin" Value="15"/>
+        <Setter Property="Margin" Value="15,10,15,5"/>
+        <Setter Property="FontWeight" Value="Normal"/>
         <Setter Property="Foreground" Value="{StaticResource MenuItemFontBrush}"/>
     </Style>
     
@@ -89,12 +90,14 @@
         <Setter Property="FontSize" Value="18"/>        
         <Setter Property="Foreground" Value="{StaticResource InfoTextBrush}"/>
         <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="Foreground" Value="#6a6a6a"/>
     </Style>
     
     <Style TargetType="TextBlock" x:Key="FAQAnswerStyle">
         <Setter Property="FontSize" Value="15"/>
         <Setter Property="Foreground" Value="{StaticResource InfoTextBrush}"/>
         <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="Foreground" Value="#6a6a6a"/>
     </Style>
     
     <Style TargetType="TextBlock" x:Name="PageHeaderStyle">
@@ -104,7 +107,11 @@
     <Style TargetType="TextBox" x:Key="LeadDetailTextBox">
         <Setter Property="Foreground" Value="#959595"/>        
         <Setter Property="TextWrapping" Value="Wrap"/>
-        <Setter Property="IsReadOnly" Value="True"/>
+        <Setter Property="IsReadOnly" Value="True"/>        
+        <Setter Property="Width" Value="200"/>
+        <Setter Property="MaxHeight" Value="50"/>
+        <Setter Property="Margin" Value="0 5 0 15"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
     </Style>
 
     <Style x:Key="MainImageTileButton" TargetType="Button">
@@ -119,7 +126,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">                    
-                        <Grid Background="#137677" Height="130" Width="130" Tapped="StackPanelTapped">
+                        <Grid x:Name="RootTile" Background="#137677" Height="130" Width="130" Tapped="StackPanelTapped">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="*"/>
@@ -132,43 +139,46 @@
                             <Image x:Name="TileImage" Stretch="None"
             Grid.Row="1"
             VerticalAlignment="Top"
-            Source="{Binding ElementName=RootHubTile, Path=ActiveTileImage}"/>                    
-                    
-                    <VisualStateManager.VisualStateGroups>
+            Source="{Binding ElementName=RootHubTile, Path=InActiveTileImage}"/>
+                        <Polygon x:Name="myploy" Points="10,30 30,30 30,10" Fill="#208485" VerticalAlignment="Bottom" HorizontalAlignment="Right" Grid.Row="1" />
+                        <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
                                 <VisualState x:Name="Normal"/>
                                 <VisualState x:Name="PointerOver">
                                     <Storyboard>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="ContentPresenter">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="#f2e7c9"/>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="RootTile">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="#F2E7C9"/>
                                         </ObjectAnimationUsingKeyFrames>
-                                        <!--<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentPresenter">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonPointerOverForegroundThemeBrush}"/>
-                                        </ObjectAnimationUsingKeyFrames>-->
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="myploy">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="#137677"/>
+                                        </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="TileText">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="#00000"/>
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource TextHightlightBrush}"/>
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Source" Storyboard.TargetName="TileImage">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{Binding ElementName=RootHubTile, Path=InActiveTileImage}"/>
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{Binding ElementName=RootHubTile, Path=ActiveTileImage}"/>
                                         </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="Pressed">
                                     <Storyboard>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="ContentPresenter">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="#f2e7c9"/>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Source" Storyboard.TargetName="TileImage">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{Binding ElementName=RootHubTile, Path=ActiveTileImage}"/>
                                         </ObjectAnimationUsingKeyFrames>
-                                        <!--<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentPresenter">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonPressedForegroundThemeBrush}"/>
-                                        </ObjectAnimationUsingKeyFrames>-->
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="myploy">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="#137677"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="RootTile">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="#F2E7C9"/>
+                                        </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="TileText">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="#01aaad"/>
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource TextHightlightBrush}"/>
                                         </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="Disabled">
                                     <Storyboard>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="Border">
+                                        <!--<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="Border">
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonDisabledBackgroundThemeBrush}"/>
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="Border">
@@ -176,7 +186,7 @@
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentPresenter">
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonDisabledForegroundThemeBrush}"/>
-                                        </ObjectAnimationUsingKeyFrames>
+                                        </ObjectAnimationUsingKeyFrames>-->
                                     </Storyboard>
                                 </VisualState>
                             </VisualStateGroup>
