@@ -11,7 +11,8 @@ namespace UsBank.Core.Services
 {
     public class StubbedDataService
     {
-        public const string CRMServiceURL = "http://usbankerdesktoppoc.cognizant.com/Service1.svc";
+        public const string CRMServiceURL = "https://usbankpmo.cognizant.com/MSCRM/Service1.svc";
+        //"http://usbankerdesktoppoc.cognizant.com/Service1.svc";
 
         private static StubbedDataService _currentInstance = new StubbedDataService();
 
@@ -36,9 +37,11 @@ namespace UsBank.Core.Services
         public StubbedDataService()
         {
             BasicHttpBinding basicBinding = new BasicHttpBinding();
-            EndpointAddress serviceEndpoint = new EndpointAddress(CRMServiceURL);            
+            basicBinding.Security.Mode = BasicHttpSecurityMode.Transport;
+            EndpointAddress serviceEndpoint = new EndpointAddress(CRMServiceURL);
             var channelFactory = new ChannelFactory<CRMService.IService1>(basicBinding, serviceEndpoint);
             serviceClient = channelFactory.CreateChannel();
+            //serviceClient = new  CRMService.Service1Client();
         }
 
         public async Task<List<LeadData>> GetLeadData(string username)
@@ -46,25 +49,37 @@ namespace UsBank.Core.Services
             if (IsMockup)
             {
                 await Task.Delay(500);
+                List<string> LeadNamelist = new List<string>() { "Irvin Black", "Isabelle Benson", "Charles siebert" };
+                List<string> ProductNamelist = new List<string>() { "15-Year Fixed - Jumbo", "15-Year Fixed - VA - Purchase", "30-Year Fixed - Jumbo" };
+                if (username.Contains("Nicole Anderson"))
+                {
+                    LeadNamelist = new List<string>() { "Mike Herman", "David Blatt", "Nicholas Aglen" };
+                    ProductNamelist = new List<string>() {  "15-Year Fixed - VA - Purchase", "15-Year Fixed - Jumbo", "30-Year Fixed - Jumbo" };
+                }
+                if (username.Contains("Brian David"))
+                {
+                    LeadNamelist = new List<string>() { "Scott mccarron", "Jack huston", "Nancy  Kelly" };
+                    ProductNamelist = new List<string>() { "30-Year Fixed - Jumbo", "15-Year Fixed - VA - Purchase", "15-Year Fixed - Jumbo" };
+                }
                 return new List<LeadData>
                 {
                     new LeadData
                     {
                         LeadId = Guid.Empty,
-                        LeadName = "Irvin Black",
-                        ProductName = "30-Year Fixed - Jumbo",
+                        LeadName = LeadNamelist[0],
+                        ProductName = ProductNamelist[0],
                     },
                     new LeadData
                     {
                         LeadId = Guid.Empty,
-                        LeadName = "Isabelle Benson",
-                        ProductName = "15-Year Fixed - VA - Purchase",
+                        LeadName = LeadNamelist[1],
+                        ProductName = ProductNamelist[1],
                     },
                     new LeadData
                     {
                         LeadId = Guid.Empty,
-                        LeadName = "Irvin Black",
-                        ProductName = "30-Year Fixed - Jumbo",
+                        LeadName = LeadNamelist[2],
+                        ProductName = ProductNamelist[2],
                     },
                 };
             }
@@ -88,20 +103,40 @@ namespace UsBank.Core.Services
             if (IsMockup)
             {
                 await Task.Delay(500);
-                return new LeadDetails
+                List<LeadDetails> leaddetaillist = new List<LeadDetails>()
                 {
-                    Address = "HSG Street",
-                    City = "Chicago",
-                    Description = "",
-                    DOB = "10/6/1992 6:30:00 PM",
-                    FullName = "Owen Pratt",
-                    Gender = "Male",
-                    leadId = Guid.Empty,
-                    leadNumber = "LD-00003",
-                    PhoneNo = "",
-                    Product = "30-Year Fixed - Jumbo",
-                    State = "Chicago",
+                    new LeadDetails { Address = "HSG Street", City = "Chicago", Description = "", DOB = "10/6/1992 6:30:00 PM", FullName = "Irvin Black", Gender = "Male", leadId = Guid.Empty, leadNumber = "LD-00001",  PhoneNo = "",  Product = "15-Year Fixed - Jumbo", State = "Chicago"},
+                    new LeadDetails { Address = "Lakewood Avenue", City = "Chicago", Description = "", DOB = "12/8/1985 6:30:00 PM", FullName = "Charles siebert", Gender = "Male", leadId = Guid.Empty, leadNumber = "LD-00002",  PhoneNo = "",  Product = "30-Year Fixed - Jumbo", State = "Chicago"},
+                    new LeadDetails { Address = "W. Tremont St", City = "Chicago", Description = "", DOB = "9/12/1990 6:30:00 PM", FullName = "Isabelle Benson", Gender = "Female", leadId = Guid.Empty, leadNumber = "LD-00003",  PhoneNo = "",  Product = "15-Year Fixed - VA - Purchase", State = "Chicago"},
+                    new LeadDetails { Address = "Peoria St", City = "Chicago", Description = "", DOB = "2/2/1980 6:30:00 PM", FullName = "Mike Herman", Gender = "Male", leadId = Guid.Empty, leadNumber = "LD-00004",  PhoneNo = "",  Product = "15-Year Fixed - VA - Purchase", State = "Chicago"},
+                    new LeadDetails { Address = "Lakewood Avenue", City = "Chicago", Description = "", DOB = "3/1/1987 6:30:00 PM", FullName = "David Blatt", Gender = "Male", leadId = Guid.Empty, leadNumber = "LD-00005",  PhoneNo = "",  Product = "15-Year Fixed - Jumbo", State = "Chicago"},
+                    new LeadDetails { Address = "W. Tremont St", City = "Chicago", Description = "", DOB = "4/4/1991 6:30:00 PM", FullName = "Nicholas Aglen", Gender = "Male", leadId = Guid.Empty, leadNumber = "LD-00006",  PhoneNo = "",  Product = "30-Year Fixed - Jumbo", State = "Chicago"},
+                    new LeadDetails { Address = "Peoria St", City = "Chicago", Description = "", DOB = "9/9/1986 6:30:00 PM", FullName = "Scott mccarron", Gender = "Male", leadId = Guid.Empty, leadNumber = "LD-00007",  PhoneNo = "",  Product = "30-Year Fixed - Jumbo", State = "Chicago"},
+                    new LeadDetails { Address = "Lakewood Avenue", City = "Chicago", Description = "", DOB = "8/12/1985 6:30:00 PM", FullName = "Jack huston", Gender = "Male", leadId = Guid.Empty, leadNumber = "LD-00008",  PhoneNo = "",  Product = "15-Year Fixed - VA - Purchase", State = "Chicago"},
+                    new LeadDetails { Address = "HSG Street", City = "Chicago", Description = "", DOB = "7/3/1983 6:30:00 PM", FullName = "Nancy  Kelly", Gender = "Female", leadId = Guid.Empty, leadNumber = "LD-00009",  PhoneNo = "",  Product = "15-Year Fixed - Jumbo", State = "Chicago"},
                 };
+                var leaddetail = leaddetaillist.Where(o => o.FullName.Contains(leadname));
+                if (leaddetail != null && leaddetail.Count() > 0)
+                {
+                    return leaddetail.FirstOrDefault();
+                }
+                else
+                {
+                    return new LeadDetails
+                    {
+                        Address = "HSG Street",
+                        City = "Chicago",
+                        Description = "",
+                        DOB = "10/6/1992 6:30:00 PM",
+                        FullName = "Owen Pratt",
+                        Gender = "Male",
+                        leadId = Guid.Empty,
+                        leadNumber = "LD-00003",
+                        PhoneNo = "",
+                        Product = "30-Year Fixed - Jumbo",
+                        State = "Chicago",
+                    };
+                }
             }
             else
             {
@@ -159,7 +194,7 @@ namespace UsBank.Core.Services
             else
             {
                 //TODO : remove the hard coding one service return response for cath
-                username = "Cathy Liz";
+                username = "Sagar Shirsath";
                 List<user> userlist = new List<user>();
                 ObservableCollection<UsBank.Core.CRMService.user> crmuserlist = await serviceClient.GetUserDataAsync(username);
                 if (crmuserlist != null && crmuserlist.Count > 0)

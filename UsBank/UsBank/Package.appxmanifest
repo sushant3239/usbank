@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest">
-  <Identity Name="ed3e89d3-1bad-4cf1-adaf-3339d57b7789" Publisher="CN=cts1" Version="1.0.0.0" />
+  <Identity Name="ed3e89d3-1bad-4cf1-adaf-3339d57b7789" Publisher="CN=cts" Version="1.0.0.0" />
   <Properties>
     <DisplayName>UsBank</DisplayName>
     <PublisherDisplayName>cts1</PublisherDisplayName>
